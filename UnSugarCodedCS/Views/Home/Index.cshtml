@@ -23,8 +23,7 @@
             $("#txtFood").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: '/Home/AutoComplete/',
-                        data: "{ 'prefix': '" + request.term + "'}",
+                        url: '/sugar/'+ request.term,
                         dataType: "json",
                         type: "POST",
                         contentType: "application/json; charset=utf-8",
@@ -42,21 +41,83 @@
                     });
                 },
                 select: function (e, i) {
-                    $("#hfCustomer").val(i.item.val);
+                    // $.ajax({
+                    //     url: '/sugarLevel/'+ i.item.val,
+                    //     type: "post",
+                    //     data : formData,
+                    //     contentType: "application/json; charset=utf-8",
+                    //     success: function(data, textStatus, jqXHR)
+                    //     {
+                    //       $("sugarLevel").val(data);
+                    //     }
+                    //     error: function (jqXHR, textStatus, errorThrown){}
+                    // });
+
+                },
+                minLength: 1
+            });
+        });
+
+
+        $(function () {
+            $("#lunch").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/sugar/'+ request.term,
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    // $.ajax({
+                    //     url: '/sugarLevel/'+ i.item.val,
+                    //     type: "post",
+                    //     data : formData,
+                    //     contentType: "application/json; charset=utf-8",
+                    //     success: function(data, textStatus, jqXHR)
+                    //     {
+                    //       $("sugarLevel").val(data);
+                    //     }
+                    //     error: function (jqXHR, textStatus, errorThrown){}
+                    // });
+
                 },
                 minLength: 1
             });
         });
     </script>
-    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
-    {
 
-        <input type="text" id="txtFood" name="food"/>
-        <input type="hidden" id="hfCustomer" name="foodId"/>
+
+        <form action="/details" method="post">
+
+        <input type="text" id="txtFood" name="txtFood"/>
+        <input type="text" id="sugarLevel" name="sugarLevel"/>
+        <input type="datetime-local" id="stampTime" name="stampTime"/>
+
+        <input type="text" id="lunch" name="lunch"/>
+        <input type="text" id="sugarLevel" name="sugarLevel"/>
+        <input type="datetime-local" id="stampTime" name="stampTime"/>
+
+
+
+
         <br /><br />
         <input type="submit" id="btnSubmit" value="Submit"/>
+        </form>
         <br /><br />
-        @ViewBag.Message
-    }
+
+
 </body>
 </html>

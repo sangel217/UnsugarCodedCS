@@ -6,71 +6,29 @@ namespace UnSugarCodedCS.Models
 {
 public class LogBook
 {
-private string _breakfastFood;
-private string _lunchFood;
-private string _dinnerFood;
-private string _snackFood;
-private float _breakfastSugar;
-private float _lunchSugar;
-private float _dinnerSugar;
-private float _snackSugar;
+private string _food;
+private float _sugar;
 private DateTime _stampTime;
 private int _id;
 private int _userId;
 
-public LogBook (string breakfastFood, string lunchFood, string dinnerFood, string snackFood, DateTime stampTime,float breakfastSugar, float lunchSugar, float dinnerSugar, float snackSugar, int userId, int id=0)
+public LogBook (string food, DateTime stampTime,float sugar, int userId, int id=0)
 {
-	_breakfastFood = breakfastFood;
-	_lunchFood = lunchFood;
-	_dinnerFood = dinnerFood;
-	_snackFood = snackFood;
-	_breakfastSugar = breakfastSugar;
-	_lunchSugar = lunchSugar;
-	_dinnerSugar = dinnerSugar;
-	_snackSugar = snackSugar;
+	_food = food;
+	_sugar = sugar;
 	_stampTime = stampTime;
 	_userId = userId;
 	_id =id;
 }
 
-public string GetBreakfastFood()
+public string GetFood()
 {
-	return _breakfastFood;
+	return _food;
 }
 
-public string GetLunchFood()
+public float GetSugar()
 {
-	return _lunchFood;
-}
-
-public string GetDinnerFood()
-{
-	return _dinnerFood;
-}
-
-public string GetSnackFood()
-{
-	return _snackFood;
-}
-
-public float GetBreakfastSugar()
-{
-	return _breakfastSugar;
-}
-
-public float GetLunchSugar()
-{
-	return _lunchSugar;
-}
-
-public float GetDinnerSugar()
-{
-	return _dinnerSugar;
-}
-
-public float GetSnackSugar()
-{
-	return _snackSugar;
+	return _sugar;
 }
 
 public DateTime GetStampTime()
@@ -89,7 +47,8 @@ public int GetUserId()
 
 public static List<LogBook> GetAll()
 {
-	List<LogBook> allDatas = new List<LogBook> {};
+	List<LogBook> allDatas = new List<LogBook> {
+	};
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
 	MySqlCommand cmd = conn.CreateCommand();
@@ -98,10 +57,7 @@ public static List<LogBook> GetAll()
 	while(rdr.Read())
 	{
 		int loogBookId = rdr.GetInt32(0);
-		string breakfastFood = rdr.GetString(1);
-		string lunchFood = rdr.GetString(2);
-		string dinnerFood = rdr.GetString(3);
-		string snackFood = rdr.GetString()
+		string food = rdr.GetString(1);
 		DateTime stampTime = rdr.GetDateTime(2);
 		float sugar = rdr.GetFloat(3);
 		int user_id = rdr.GetInt32(4);
