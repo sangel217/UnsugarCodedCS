@@ -53,6 +53,8 @@ public static List<FoodSugar> GetAll()
   if(conn != null) conn.Dispose();
   return allDatas;
 }
+
+
 public static List<string> GetAllFoodNames(string userInput)
 {
   List<string> allSugarNames = new List<string>{};
@@ -74,8 +76,25 @@ public static List<string> GetAllFoodNames(string userInput)
 
 
 
+public static float GetAllSugarLevel(string name)
+{
+  float allSugarLevels = 0;
+  MySqlConnection conn = DB.Connection();
+  conn.Open();
+  MySqlCommand cmd = conn.CreateCommand();
+  cmd.CommandText = @"SELECT added_sugars FROM food_sugar WHERE name = @name;";
+  MySqlParameter foodParameter = new MySqlParameter ("@name",name);
+  cmd.Parameters.Add(foodParameter);
+  MySqlDataReader rdr = cmd.ExecuteReader();
+  while(rdr.Read())
+  {
+    float sugarLevel  = rdr.GetFloat(0);
 
-
+  }
+  conn.Close();
+  if(conn != null) conn.Dispose();
+  return allSugarLevels;
+}
 
 }
 

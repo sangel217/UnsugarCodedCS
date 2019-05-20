@@ -18,13 +18,21 @@ public class HomeController : Controller
     return View();
   }
 
-  // [HttpPost("/Home/AutoComplete/{userInput}")]
-  // public JsonResult GetSugarNames ( string userInput)
-  // {
-  //   List<string> allSugars = string.GetAllFoodNames(userInput);
-  //
-  //   return Json(allSugars);
-  // }
+  [HttpPost("/sugar/{userInput}")]
+  public JsonResult GetSugarNames ( string userInput)
+  {
+    List<string> allSugars = FoodSugar.GetAllFoodNames(userInput);
+
+    return Json(allSugars);
+  }
+
+  [HttpPost("/sugarLevel/{name}")]
+  public JsonResult GetSugarLevels (string name)
+  {
+    float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
+
+    return Json(allSugarLevels);
+  }
 
 }
 }
