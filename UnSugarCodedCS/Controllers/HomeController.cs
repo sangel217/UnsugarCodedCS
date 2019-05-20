@@ -31,8 +31,16 @@ public class HomeController : Controller
   {
     float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
 
-    return Json(allSugarLevels);
+    return Json(allSugarLevels.ToString());
   }
 
+  [HttpPost("/details")]
+   public ActionResult Create(string txtFood, DateTime stampTime, float sugarLevel)
+   {
+     LogBook newLogBook = new LogBook(txtFood,stampTime,sugarLevel,5);
+     newLogBook.Save();
+     List<LogBook> newList = LogBook.GetAll();
+     return View("Show",newList);
+   }
 }
 }

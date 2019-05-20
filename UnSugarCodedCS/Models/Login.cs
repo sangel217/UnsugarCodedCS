@@ -75,15 +75,15 @@
 //       MySqlConnection conn = DB.Connection();
 //       conn.Open();
 //       var cmd = conn.CreateCommand() as MySqlCommand;
-//       cmd.CommandText = @"SELECT * FROM logins;";
+//       cmd.CommandText = @"SELECT * FROM users;";
 //       var rdr = cmd.ExecuteReader() as MySqlDataReader;
 //       while(rdr.Read())
 //       {
-//         LoginId = rdr.GetInt32(0);
-//         LoginName = rdr.GetString(1);
-//         LoginEmail = rdr.GetString(2);
-//         LoginHeight = rdr.GetInt32(3);
-//         LoginWeight = rdr.GetInt32(4);
+//         int LoginId = rdr.GetInt32(0);
+//         string LoginName = rdr.GetString(1);
+//         string LoginEmail = rdr.GetString(2);
+//         int LoginHeight = rdr.GetInt32(3);
+//         int LoginWeight = rdr.GetInt32(4);
 //         Login newLogin = new Login(LoginName, LoginEmail, LoginHeight, LoginWeight, LoginId);
 //         allLogins.Add(newLogin);
 //       }
@@ -101,7 +101,7 @@
 //       MySqlConnection conn = DB.Connection();
 //       conn.Open();
 //       var cmd = conn.CreateCommand() as MySqlCommand;
-//       cmd.CommandText = @"DELETE FROM logins;";
+//       cmd.CommandText = @"DELETE FROM users;";
 //       cmd.ExecuteNonQuery();
 //       conn.Close();
 //       if (conn != null)
@@ -115,7 +115,7 @@
 //       MySqlConnection conn = DB.Connection();
 //       conn.Open();
 //       var cmd = conn.CreateCommand() as MySqlCommand;
-//       cmd.CommandText = @"INSERT INTO logins (userName, userEmail, userHeight, userWeight) VALUES (@userName, @userEmail, @userHeight, @userWeight);";
+//       cmd.CommandText = @"INSERT INTO users (userName, userEmail, userHeight, userWeight) VALUES (@userName, @userEmail, @userHeight, @userWeight);";
 //       MySqlParameter userName = new MySqlParameter();
 //       userName.ParameterName = "@userName";
 //       userName.Value = this._userName;
@@ -146,7 +146,7 @@
 //       MySqlConnection conn = DB.Connection();
 //       conn.Open();
 //       var cmd = conn.CreateCommand() as MySqlCommand;
-//       cmd.CommandText = @"SELECT * FROM logins WHERE id = (@searchId);";
+//       cmd.CommandText = @"SELECT * FROM users WHERE id = (@searchId);";
 //       MySqlParameter searchId = new MySqlParameter();
 //       searchId.ParameterName = "@searchId";
 //       searchId.Value = id;
@@ -174,12 +174,12 @@
 //       return newLogin;
 //     }
 //
-//     public void Edit(string newName, newEmail, newHeight, newWeight)
+//     public void Edit(string newName, string newEmail, int newHeight, int newWeight)
 //     {
 //       MySqlConnection conn = DB.Connection();
 //       conn.Open();
 //       var cmd = conn.CreateCommand() as MySqlCommand;
-//       cmd.CommandText = @"UPDATE logins SET userName = @newName, userEmail = @newEmail, userHeight = @newHeight, userWeight = @newWeight, WHERE id = @searchId;";
+//       cmd.CommandText = @"UPDATE users SET userName = @newName, userEmail = @newEmail, userHeight = @newHeight, userWeight = @newWeight WHERE id = @searchId;";
 //       MySqlParameter searchId = new MySqlParameter();
 //       searchId.ParameterName = "@searchId";
 //       searchId.Value = _id;
@@ -201,7 +201,10 @@
 //       userWeight.Value = newWeight;
 //       cmd.Parameters.Add(userWeight);
 //       cmd.ExecuteNonQuery();
-//       _name = newName;
+//       _userName = newName;
+//       _userEmail = newEmail;
+//       _userHeight = newHeight;
+//       _userWeight = newWeight;
 //       conn.Close();
 //       if (conn != null)
 //       {
@@ -213,7 +216,7 @@
 //     {
 //       MySqlConnection conn = DB.Connection();
 //       conn.Open();
-//       MySqlCommand cmd = new MySqlCommand("DELETE FROM logins WHERE id = @LoginId;", conn);
+//       MySqlCommand cmd = new MySqlCommand("DELETE FROM users WHERE id = @LoginId;", conn);
 //       MySqlParameter loginIdParameter = new MySqlParameter();
 //       loginIdParameter.ParameterName = "@LoginId";
 //       loginIdParameter.Value = this.GetId();
@@ -224,5 +227,35 @@
 //         conn.Close();
 //       }
 //     }
-//   }
+//
+//     public List<LogBook> GetLogBooks()
+//     {
+//       List<LogBook> allLoginLogBooks = new List<LogBook> {};
+//       MySqlConnection conn = DB.Connection();
+//       conn.Open();
+//       var cmd = conn.CreateCommand() as MySqlCommand;
+//       cmd.CommandText = @"SELECT * FROM log_book WHERE user_id = @user_id;";
+//       MySqlParameter userId = new MySqlParameter();
+//       userId.ParameterName = "@user_id";
+//       userId.Value = this._id;
+//       cmd.Parameters.Add(userId);
+//       var rdr = cmd.ExecuteReader() as MySqlDataReader;
+//       while(rdr.Read())
+//       {
+//         int logbookId = rdr.GetInt32(0);
+//         string logbookFood = rdr.GetString(1);
+//         DateTime logbookStampTime = rdr.GetDateTime(2);
+//         int logbookSugar = rdr.GetInt32(3);
+//         int logbookLoginId = rdr.GetInt32(4);
+//         LogBook newLogBook = new LogBook(logbookFood, logbookStampTime, logbookSugar, logbookLoginId, loogBookId);
+//         allLoginLogBooks.Add(newLogBook);
+//       }
+//       conn.Close();
+//       if (conn != null)
+//       {
+//         conn.Dispose();
+//       }
+//       return allLoginLogBooks;
+//      }
+//     }
 // }
