@@ -242,12 +242,18 @@ namespace UnSugarCodedCS.Models
       var rdr = cmd.ExecuteReader() as MySqlDataReader;
       while(rdr.Read())
       {
-        int logbookId = rdr.GetInt32(0);
-        string logbookFood = rdr.GetString(1);
-        DateTime logbookStampTime = rdr.GetDateTime(2);
-        int logbookSugar = rdr.GetInt32(3);
-        int logbookLoginId = rdr.GetInt32(4);
-        LogBook newLogBook = new LogBook(logbookFood, logbookStampTime, logbookSugar, logbookLoginId, loogBookId);
+        int loogBookId = rdr.GetInt32(0);
+    		string breakfastFood = rdr.GetString(1);
+    		string lunchFood = rdr.GetString(2);
+    		string dinnerFood = rdr.GetString(3);
+    		string snackFood = rdr.GetString(4);
+    		DateTime stampTime = rdr.GetDateTime(5);
+    		float breakfastSugar = rdr.GetFloat(6);
+    		float lunchSugar = rdr.GetFloat(7);
+    		float dinnerSugar = rdr.GetFloat(8);
+    		float snackSugar = rdr.GetFloat(9);
+    		int user_id = rdr.GetInt32(10);
+    		LogBook newlogBook = new LogBook(breakfastFood, lunchFood, dinnerFood, snackFood, stampTime, breakfastSugar, lunchSugar, dinnerSugar, snackSugar, user_id);
         allLoginLogBooks.Add(newLogBook);
       }
       conn.Close();
