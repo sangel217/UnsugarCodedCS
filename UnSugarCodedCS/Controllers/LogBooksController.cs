@@ -9,14 +9,8 @@ using System.Runtime.Serialization;
 
 namespace UnSugarCodedCS.Controllers
 {
-public class HomeController : Controller
+public class LogBooksController : Controller
 {
-
-  [HttpGet("/")]
-  public ActionResult Index()
-  {
-    return View();
-  }
 
   [HttpPost("/sugar/{userInput}")]
   public JsonResult GetSugarNames ( string userInput)
@@ -35,7 +29,7 @@ public class HomeController : Controller
   }
 
   [HttpPost("/details")]
-   public ActionResult Create(string txtFood, DateTime stampTime, float sugarLevel)
+   public ActionResult Create(string breakfast, string lunch, string dinner, string snack, DateTime stampTimeBreakfast, DateTime stampTimeLunch, DateTime stampTimeDinner, DateTime stampTimeSnack, float breakfastCarb, float lunchCarb, flo)
    {
      LogBook newLogBook = new LogBook(txtFood,stampTime,sugarLevel,5);
      newLogBook.Save();
