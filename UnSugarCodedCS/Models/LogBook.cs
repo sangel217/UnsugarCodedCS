@@ -18,10 +18,14 @@ private DateTime _stampTimeBreakfast;
 private DateTime _stampTimeLunch;
 private DateTime _stampTimeDinner;
 private DateTime _stampTimeSnack;
+private float _carbBreakfast;
+private float _carbLunch;
+private float _carbDinner;
+private float _carbSnack;
 private int _id;
 private int _userId;
 
-public LogBook (string breakfastFood, string lunchFood, string dinnerFood, string snackFood, DateTime stampTimeBreakfast, DateTime stampTimeLunch, DateTime stampTimeDinner, DateTime stampTimeSnack, float breakfastSugar, float lunchSugar, float dinnerSugar, float snackSugar, int userId, int id=0)
+public LogBook (string breakfastFood, string lunchFood, string dinnerFood, string snackFood, DateTime stampTimeBreakfast, DateTime stampTimeLunch, DateTime stampTimeDinner, DateTime stampTimeSnack, float breakfastSugar, float lunchSugar, float dinnerSugar, float snackSugar, float carbBreakfast, float carbLunch, float carbDinner, float carbSnack, int userId, int id=0)
 {
 	_breakfastFood = breakfastFood;
 	_lunchFood = lunchFood;
@@ -35,6 +39,10 @@ public LogBook (string breakfastFood, string lunchFood, string dinnerFood, strin
 	_lunchSugar = lunchSugar;
 	_dinnerSugar = dinnerSugar;
 	_snackSugar = snackSugar;
+	_carbBreakfast = carbBreakfast;
+	_carbLunch = carbLunch;
+	_carbDinner = carbDinner;
+	_carbSnack = carbSnack
 	_userId = userId;
 	_id =id;
 }
@@ -77,6 +85,26 @@ public float GetDinnerSugar()
 public float GetSnackSugar()
 {
 	return _snackSugar;
+}
+
+public float GetBreakfastCarb()
+{
+	return _carbBreakfast;
+}
+
+public float GetLunchCarb()
+{
+	return _carbLunch;
+}
+
+public float GetDinnerCarb()
+{
+	return _carbDinner;
+}
+
+public float GetSnackCarb()
+{
+	return _carbLunch;
 }
 
 public DateTime GetBreakfastStampTime()
@@ -132,8 +160,12 @@ public static List<LogBook> GetAll()
 		float lunchSugar = rdr.GetFloat(10);
 		float dinnerSugar = rdr.GetFloat(11);
 		float snackSugar = rdr.GetFloat(12);
-		int user_id = rdr.GetInt32(13);
-		LogBook newlogBook = new LogBook(breakfastFood, lunchFood, dinnerFood, snackFood, stampTimeB, stampTimeL, stampTimeD, stampTimeS, breakfastSugar, lunchSugar, dinnerSugar, snackSugar, user_id);
+		float breakfastCarb = rdr.GetFloat(13);
+		float lunchCarb = rdr.GetFloat(14);
+		float dinnerCarb = rdr.GetFloat(15);
+		float snackCarb = rdr.GetFloat(16);
+		int user_id = rdr.GetInt32(17);
+		LogBook newlogBook = new LogBook(breakfastFood, lunchFood, dinnerFood, snackFood, stampTimeB, stampTimeL, stampTimeD, stampTimeS, breakfastSugar, lunchSugar, dinnerSugar, snackSugar, breakfastCarb, lunchCarb, dinnerCarb, snackCarb, user_id);
 		allDatas.Add(newlogBook);
 	}
 
@@ -146,7 +178,7 @@ public void Save()
 	MySqlConnection conn =DB.Connection();
 	conn.Open();
 	MySqlCommand cmd = conn.CreateCommand();
-	cmd.CommandText = @"INSERT INTO log_book (breakfastFood, lunchFood, dinnerFood, snackFood, stampTimeBreakfast, stampTimeLunch. stampTimeDinner, stampTimeDinner, breakfastSugar, lunchSugar, dinnerSugar, snackSugar, user_id) VALUES (@breakfastFood, @lunchFood, @dinnerFood, @snackFood, @stampTimeBreakfast, @stampTimeLunch. @stampTimeDinner, @stampTimeDinner, @breakfastSugar, @lunchSugar, @dinnerSugar, @snackSugar, @user_id);";
+	cmd.CommandText = @"INSERT INTO log_book (breakfastFood, lunchFood, dinnerFood, snackFood, stampTimeBreakfast, stampTimeLunch. stampTimeDinner, stampTimeDinner, breakfastSugar, lunchSugar, dinnerSugar, snackSugar, carbBreakfast, carbLunch, carbDinner, carbSnack, user_id) VALUES (@breakfastFood, @lunchFood, @dinnerFood, @snackFood, @stampTimeBreakfast, @stampTimeLunch. @stampTimeDinner, @stampTimeDinner, @breakfastSugar, @lunchSugar, @dinnerSugar, @snackSugar, @carbBreakfast, @carbLunch, @carbDinner, @carbSnack, @user_id);";
 	MySqlParameter breakfastFoodParameter = new MySqlParameter ("@breakfastFood",this._breakfastFood);
 	cmd.Parameters.Add(breakfastFoodParameter);
 	MySqlParameter lunchFoodParameter = new MySqlParameter ("@lunchFood",this._lunchFood);
@@ -171,6 +203,14 @@ public void Save()
 	cmd.Parameters.Add(dinnerSugarParameter);
 	MySqlParameter snackSugarParameter = new MySqlParameter ("@snackSugar",this._snackSugar);
 	cmd.Parameters.Add(snackSugarParameter);
+	MySqlParameter carbBreakfastParameter = new MySqlParameter ("@carbBreakfast",this._carbBreakfast);
+	cmd.Parameters.Add(carbBreakfastParameter);
+	MySqlParameter lcarbLunchParameter = new MySqlParameter ("@lcarbLunch",this._lcarbLunch);
+	cmd.Parameters.Add(lcarbLunchParameter);
+	MySqlParameter carbDinnerParameter = new MySqlParameter ("@carbDinner",this._carbDinner);
+	cmd.Parameters.Add(carbDinnerParameter);
+	MySqlParameter carbSnackParameter = new MySqlParameter ("@carbSnack",this._carbSnack);
+	cmd.Parameters.Add(carbSnackParameter);
 	MySqlParameter userParameter = new MySqlParameter ("@userid",this._userId);
 	cmd.Parameters.Add(userParameter);
 	cmd.ExecuteNonQuery();
