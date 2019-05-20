@@ -1,1 +1,62 @@
 @{ Layout = "_Layout"; }
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    <title>Index</title>
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+    </style>
+</head>
+<body>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.0.min.js" type="text/javascript"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.aspnetcdn.com/ajax/jquery.ui/1.9.2/themes/blitzer/jquery-ui.css"
+          rel="Stylesheet" type="text/css"/>
+    <script type="text/javascript">
+        $(function () {
+            $("#txtFood").autocomplete({
+                source: function (request, response) {
+                    $.ajax({
+                        url: '/Home/AutoComplete/',
+                        data: "{ 'prefix': '" + request.term + "'}",
+                        dataType: "json",
+                        type: "POST",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            response($.map(data, function (item) {
+                                return item;
+                            }))
+                        },
+                        error: function (response) {
+                            alert(response.responseText);
+                        },
+                        failure: function (response) {
+                            alert(response.responseText);
+                        }
+                    });
+                },
+                select: function (e, i) {
+                    $("#hfCustomer").val(i.item.val);
+                },
+                minLength: 1
+            });
+        });
+    </script>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+
+        <input type="text" id="txtFood" name="food"/>
+        <input type="hidden" id="hfCustomer" name="foodId"/>
+        <br /><br />
+        <input type="submit" id="btnSubmit" value="Submit"/>
+        <br /><br />
+        @ViewBag.Message
+    }
+</body>
+</html>
