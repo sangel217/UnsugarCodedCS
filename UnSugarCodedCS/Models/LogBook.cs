@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 
-namespace UnsugarCoded.Models
+namespace UnSugarCodedCS.Models
 {
 public class LogBook
 {

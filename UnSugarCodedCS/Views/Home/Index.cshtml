@@ -23,8 +23,7 @@
             $("#txtFood").autocomplete({
                 source: function (request, response) {
                     $.ajax({
-                        url: '/Home/AutoComplete/',
-                        data: "{ 'prefix': '" + request.term + "'}",
+                        url: '/Home/AutoComplete/'+ request.term,
                         dataType: "json",
                         type: "POST",
                         contentType: "application/json; charset=utf-8",
@@ -51,7 +50,7 @@
     @using (Html.BeginForm("Index", "Home", FormMethod.Post))
     {
 
-        <input type="text" id="txtFood" name="food"/>
+        <input type="text" id="txtFood" name="userInput"/>
         <input type="hidden" id="hfCustomer" name="foodId"/>
         <br /><br />
         <input type="submit" id="btnSubmit" value="Submit"/>

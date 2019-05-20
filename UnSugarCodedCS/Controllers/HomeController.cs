@@ -1,4 +1,4 @@
-using UnsugarCoded.Models;
+using UnSugarCodedCS.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +7,7 @@ using System.Web;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
-namespace UnsugarCoded.Controllers
+namespace UnSugarCodedCS.Controllers
 {
 public class HomeController : Controller
 {
@@ -17,6 +17,14 @@ public class HomeController : Controller
   {
     return View();
   }
+
+  // [HttpPost("/Home/AutoComplete/{userInput}")]
+  // public JsonResult GetSugarNames ( string userInput)
+  // {
+  //   List<string> allSugars = string.GetAllFoodNames(userInput);
+  //
+  //   return Json(allSugars);
+  // }
 
 }
 }
