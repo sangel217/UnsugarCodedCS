@@ -45,7 +45,7 @@ public ActionResult CreateLunch(string foodLunch, string sugarLevelLunch, DateTi
 	LogBook newLogBook = new LogBook( "", foodLunch, "", "", new DateTime(), stampTimeLunch,new DateTime(), new DateTime(),  0, float.Parse(sugarLevelLunch),0, 0, 0,float.Parse(carbLunch),0, 0, 5);
 	newLogBook.Save();
 	List<LogBook> newList = LogBook.GetAll();
-	return View("Index",newList);
+	return View("IndexLunch",newList);
 }
 
 [HttpPost("/dinner")]
@@ -54,7 +54,7 @@ public ActionResult CreateDinner(string foodDinner, string sugarLevelDinner, Dat
 	LogBook newLogBook = new LogBook( "", "", foodDinner,"",  new DateTime(), new DateTime(), stampTimeDinner,new DateTime(),  0, 0,float.Parse(sugarLevelDinner), 0,  0, 0,float.Parse(carbDinner), 0, 5);
 	newLogBook.Save();
 	List<LogBook> newList = LogBook.GetAll();
-	return View("Index",newList);
+	return View("IndexDinner",newList);
 }
 
 [HttpPost("/snack")]
@@ -63,7 +63,7 @@ public ActionResult CreateSnack(string foodSnack, string sugarLevelSnack, DateTi
 	LogBook newLogBook = new LogBook( "", "", "",foodSnack,  new DateTime(), new DateTime(), new DateTime(), stampTimeSnack, 0, 0, 0, float.Parse(sugarLevelSnack), 0, 0, 0, float.Parse(carbSnack),5);
 	newLogBook.Save();
 	List<LogBook> newList = LogBook.GetAll();
-	return View("Index",newList);
+	return View("IndexSnack",newList);
 }
 
 
