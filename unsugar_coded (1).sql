@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 18, 2019 at 01:40 PM
+-- Generation Time: May 21, 2019 at 05:53 AM
 -- Server version: 5.7.25
 -- PHP Version: 7.3.1
 
@@ -2063,11 +2063,34 @@ INSERT INTO `food_sugar` (`id`, `name`, `added_sugars`) VALUES
 
 CREATE TABLE `log_book` (
   `id` int(11) NOT NULL,
-  `food` varchar(255) NOT NULL,
-  `stampTime` date NOT NULL,
-  `sugar` int(11) NOT NULL,
+  `breakfastFood` varchar(255) NOT NULL,
+  `lunchFood` varchar(255) NOT NULL,
+  `dinnerFood` varchar(255) NOT NULL,
+  `snackFood` varchar(255) NOT NULL,
+  `stampTimeBreakfast` datetime NOT NULL,
+  `stampTimeLunch` datetime NOT NULL,
+  `stampTimeDinner` datetime NOT NULL,
+  `stampTimeSnack` datetime NOT NULL,
+  `breakfastSugar` float NOT NULL,
+  `lunchSugar` float NOT NULL,
+  `dinnerSugar` float NOT NULL,
+  `snackSugar` float NOT NULL,
+  `carbBreakfast` float NOT NULL,
+  `carbLunch` float NOT NULL,
+  `carbDinner` float NOT NULL,
+  `carbSnack` float NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `log_book`
+--
+
+INSERT INTO `log_book` (`id`, `breakfastFood`, `lunchFood`, `dinnerFood`, `snackFood`, `stampTimeBreakfast`, `stampTimeLunch`, `stampTimeDinner`, `stampTimeSnack`, `breakfastSugar`, `lunchSugar`, `dinnerSugar`, `snackSugar`, `carbBreakfast`, `carbLunch`, `carbDinner`, `carbSnack`, `user_id`) VALUES
+(21, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5),
+(22, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5),
+(23, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5),
+(24, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5);
 
 -- --------------------------------------------------------
 
@@ -2077,8 +2100,32 @@ CREATE TABLE `log_book` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL
+  `userName` varchar(255) NOT NULL,
+  `userEmail` varchar(255) NOT NULL,
+  `userHeight` int(11) NOT NULL,
+  `userWeight` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `userName`, `userEmail`, `userHeight`, `userWeight`) VALUES
+(1, 'Mariia', 'As@gmail.com', 0, 0),
+(2, 'Mariia', 'As@gmail.com', 0, 0),
+(3, 'Mariia', 'As@gmail.com', 0, 0),
+(4, 'Mariia', 'As@gmail.com', 0, 0),
+(5, 'Mariia', 'As@gmail.com', 0, 0),
+(6, 'Mariia', 'As@gmail.com', 0, 0),
+(7, 'Mariia', 'As@gmail.com', 0, 0),
+(8, 'Mariia', 'As@gmail.com', 0, 0),
+(9, 'Mariia', 'As@gmail.com', 0, 0),
+(10, 'Mariia', 'As@gmail.com', 0, 0),
+(11, 'Mariia', 'As@gmail.com', 0, 0),
+(12, 'Mariia', 'As@gmail.com', 0, 0),
+(13, 'Mariia', 'As@gmail.com', 0, 0),
+(14, 'Mariia', 'As@gmail.com', 0, 0),
+(15, 'Mariia', 'As@gmail.com', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -2116,13 +2163,13 @@ ALTER TABLE `food_sugar`
 -- AUTO_INCREMENT for table `log_book`
 --
 ALTER TABLE `log_book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

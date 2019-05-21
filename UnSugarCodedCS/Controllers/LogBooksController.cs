@@ -38,6 +38,13 @@ public ActionResult Create(string food, string sugarLevel, DateTime stampTime, s
 	List<LogBook> newList = LogBook.GetAll();
 	return View("Index",newList);
 }
+[HttpGet("/LogBooks/indexlogbook")]
+public ActionResult AllLogBooks()
+{
+
+	List<LogBook> newList = LogBook.GetAll();
+	return View("Index",newList);
+}
 
 [HttpGet("/logbook/new")]
 public ActionResult New()

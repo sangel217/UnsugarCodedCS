@@ -22,7 +22,7 @@ public ActionResult Show(string userName, string userEmail)
 {
 	Login newLogin = new Login (userName,userEmail,0,0);
 	newLogin.Save();
-	return View();
+	return RedirectToAction("indexlogbook", "LogBooks");
 }
 }
 }
