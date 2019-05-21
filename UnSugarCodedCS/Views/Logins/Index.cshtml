@@ -1,21 +1,48 @@
 @{ Layout = "_Layout"; }
 @using UnSugarCodedCS.Models;
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <link rel='stylesheet' href='~/css/styles.css'>
+  </head>
+  <center><body>
+    <h1>UnSugar Coded</h1>
 
-<h1>UnSugar Coded</h1>
-<hr>
-<h3>User Accounts</h3>
+    <h3>User Accounts</h3>
 
-@if(Model.Count != 0)
-{
-  <ul>
-  @foreach(var login in Model)
-  {
-    <li><a href="/logins/@login.GetId()/logbooks">@login.GetName()</a><button class="btn btn-sm"><a href="/logins/@login.GetId()/edit">Edit Profile</a></button><form action="/logins/@login.GetId()/delete" method="post">
-        <button class="btn btn-sm" type="submit" name="button">Delete Profile</button>
-      </form></li>
-  }
-  </ul>
-}
+    @if(Model.Count != 0)
+    {
+        <ul class="list-group material_list_group">
+      @foreach(var login in Model)
+      {
+      	<li class="list-group-item material_list_group_item"><a href="/logins/@login.GetId()/logbooks">@login.GetName()
+        </a><br><button class="btn btn-sm"><a href="/logins/@login.GetId()/edit">Edit Profile</a></button><form action="/logins/@login.GetId()/delete" method="post">
+            <button class="btn btn-danger btn-sm" type="submit" name="button">Delete Profile</button>
+            
+          </form></li>
+      }
+      </ul>
+    }
+
+
+
+
+    	<li class="list-group-item material_list_group_item">Morbi leo risus</li>
+    	<li class="list-group-item material_list_group_item">Porta ac consectetur ac</li>
+    	<li class="list-group-item material_list_group_item">Vestibulum at eros</li>
+
+  </body>
+</center>
+</html>
+
+
+
+
 
 <h4><a href="/logins/new">Create a new account</a></h4>
 <h4><a href="/">Return Home</a></h4>

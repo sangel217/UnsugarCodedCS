@@ -38,3 +38,24 @@ body{
 	.contact-form button:focus{
 		box-shadow:none;
 	}
+
+
+  .material_list_group .material_list_group_item {
+    color: #fff;
+    font-weight: 400;
+    border-radius: 0;
+    background-color: #cbd9ef;
+    -webkit-transition: background-color 0.2s ease-out 0s;
+    transition: background-color 0.2s ease-out 0s;
+  }
+  .material_list_group .material_list_group_item:hover {
+    background-color: #336ea1;
+  }
+  .material_list_group .disabled:hover {
+    background-color: #4092d9;
+    color: #ffffff;
+  }
+  .material_list_group .material_badge {
+    background-color: #fff;
+    border-color: #ffffff;
+  }
