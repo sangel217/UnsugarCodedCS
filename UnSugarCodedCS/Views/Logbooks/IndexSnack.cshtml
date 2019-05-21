@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+
+<body>
+  @foreach (var logbook in Model)
+  {
+  @logbook.GetSnackFood();
+  <br />
+  @logbook.GetSnackSugar();
+  <br />
+  @logbook.GetSnackStampTime();
+  <br />
+  @logbook.GetSnackCarb();
+  <br />
+  }
+</body>
+
+</html>
