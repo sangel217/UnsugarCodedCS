@@ -12,29 +12,37 @@ namespace UnSugarCodedCS.Controllers
 public class LogBooksController : Controller
 {
 
-  [HttpPost("/sugar/{userInput}")]
-  public JsonResult GetSugarNames ( string userInput)
-  {
-    List<string> allSugars = FoodSugar.GetAllFoodNames(userInput);
+[HttpPost("/sugar/{userInput}")]
+public JsonResult GetSugarNames ( string userInput)
+{
+	List<string> allSugars = FoodSugar.GetAllFoodNames(userInput);
 
-    return Json(allSugars);
-  }
+	return Json(allSugars);
+}
 
-  [HttpPost("/sugarLevel/{name}")]
-  public JsonResult GetSugarLevels (string name)
-  {
-    float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
+[HttpPost("/sugarLevel/{name}")]
+public JsonResult GetSugarLevels (string name)
+{
+	Console.WriteLine("Name " + name);
+	float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
+	Console.WriteLine("allSugarLevels " + allSugarLevels);
 
-    return Json(allSugarLevels.ToString());
-  }
+	return Json(allSugarLevels.ToString());
+}
 
-  [HttpPost("/details")]
-   public ActionResult Create(string breakfast, string lunch, string dinner, string snack, DateTime stampTimeBreakfast, DateTime stampTimeLunch, DateTime stampTimeDinner, DateTime stampTimeSnack, float breakfastCarb, float lunchCarb, flo)
-   {
-     LogBook newLogBook = new LogBook(txtFood,stampTime,sugarLevel,5);
-     newLogBook.Save();
-     List<LogBook> newList = LogBook.GetAll();
-     return View("Show",newList);
-   }
+[HttpPost("/breakfast")]
+public ActionResult Create(string food, string sugarLevel, DateTime stampTime, string carb)
+{
+	LogBook newLogBook = new LogBook(food, "", "", "", stampTime, new DateTime(), new DateTime(), new DateTime(), float.Parse(sugarLevel), 0, 0, 0, float.Parse(carb), 0, 0, 0, 5);
+	newLogBook.Save();
+	List<LogBook> newList = LogBook.GetAll();
+	return View("Index",newList);
+}
+
+[HttpGet("/logbook/new")]
+public ActionResult New()
+{
+	return View("New");
+}
 }
 }

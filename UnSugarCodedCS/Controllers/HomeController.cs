@@ -12,35 +12,17 @@ namespace UnSugarCodedCS.Controllers
 public class HomeController : Controller
 {
 
-  [HttpGet("/")]
-  public ActionResult Index()
-  {
-    return View();
-  }
-
-  [HttpPost("/sugar/{userInput}")]
-  public JsonResult GetSugarNames ( string userInput)
-  {
-    List<string> allSugars = FoodSugar.GetAllFoodNames(userInput);
-
-    return Json(allSugars);
-  }
-
-  [HttpPost("/sugarLevel/{name}")]
-  public JsonResult GetSugarLevels (string name)
-  {
-    float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
-
-    return Json(allSugarLevels.ToString());
-  }
-
-  [HttpPost("/details")]
-   public ActionResult Create(string txtFood, DateTime stampTime, float sugarLevel)
-   {
-     LogBook newLogBook = new LogBook(txtFood,stampTime,sugarLevel,5);
-     newLogBook.Save();
-     List<LogBook> newList = LogBook.GetAll();
-     return View("Show",newList);
-   }
+[HttpGet("/")]
+public ActionResult Index()
+{
+	return View();
+}
+[HttpPost("/showForm")]
+public ActionResult Show(string userName, string userEmail)
+{
+	Login newLogin = new Login (userName,userEmail,0,0);
+	newLogin.Save();
+	return View();
+}
 }
 }
