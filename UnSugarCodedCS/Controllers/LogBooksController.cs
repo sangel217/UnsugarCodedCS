@@ -16,17 +16,14 @@ public class LogBooksController : Controller
 public JsonResult GetSugarNames ( string userInput)
 {
 	List<string> allSugars = FoodSugar.GetAllFoodNames(userInput);
-
 	return Json(allSugars);
 }
 
 [HttpPost("/sugarLevel/{name}")]
 public JsonResult GetSugarLevels (string name)
 {
-	Console.WriteLine("Name " + name);
-	float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
-	Console.WriteLine("allSugarLevels " + allSugarLevels);
 
+	float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
 	return Json(allSugarLevels.ToString());
 }
 
