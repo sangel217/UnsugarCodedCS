@@ -10,7 +10,7 @@
   <ul>
   @foreach(var login in Model)
   {
-    <li><a href="/logins/@login.GetId()/logbooks">@login.GetName()</a><button class="btn btn-sm"><a href="/logins/@login.GetId()/edit">Edit Profile</a></button><form action="/logins/@login.GetId()/delete" method="post">
+    <li><a href="/logbook/new">@login.GetName()</a><button class="btn btn-sm"><a href="/logins/@login.GetId()/edit">Edit Profile</a></button><form action="/logins/@login.GetId()/delete" method="post">
         <button class="btn btn-sm" type="submit" name="button">Delete Profile</button>
       </form></li>
   }
