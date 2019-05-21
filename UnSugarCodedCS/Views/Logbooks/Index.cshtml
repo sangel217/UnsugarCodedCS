@@ -1,19 +1,26 @@
+@using UnSugarCodedCS.Models;
 <!DOCTYPE html>
 
 <html>
 
 <body>
-  @foreach (var logbook in Model)
+  @for (int i = 0; i < ViewBag.Breakfast.Count; i++)
   {
-  @logbook.GetBreakfastFood();
+  @ViewBag.Breakfast[@i].GetBreakfastFood();
   <br />
-  @logbook.GetBreakfastSugar();
+  @ViewBag.Breakfast[@i].GetBreakfastSugar();
   <br />
-  @logbook.GetBreakfastStampTime();
+  @ViewBag.Breakfast[@i].GetBreakfastStampTime();
   <br />
-  @logbook.GetBreakfastCarb();
+  @ViewBag.Breakfast[@i].GetBreakfastCarb();
   <br />
+  <form action="/logins/@Model.GetId()/logbooks/breakfast/deletebreakfast" method="post">
+      <button class="btn btn-sm" type="submit" name="button">Delete breakfast</button>
+  </form>
   }
+
+<h4><a href="/logins/@Model.GetId()/logbooks/new">Return to logbook</a></h4>
+<h4><a href="/">Return to Home</a></h4>
 </body>
 
 </html>

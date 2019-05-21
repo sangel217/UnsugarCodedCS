@@ -20,7 +20,7 @@
         <ul class="list-group material_list_group">
       @foreach(var login in Model)
       {
-      	<li class="list-group-item material_list_group_item"><a href="/logins/@login.GetId()/logbooks">@login.GetName()
+      	<li class="list-group-item material_list_group_item"><a href="/logins/@login.GetId()/logbooks/new">@login.GetName()
         </a><br><button class="btn btn-sm"><a href="/logins/@login.GetId()/edit">Edit Profile</a></button><form action="/logins/@login.GetId()/delete" method="post">
             <button class="btn btn-danger btn-sm" type="submit" name="button">Delete Profile</button>
 
@@ -29,13 +29,8 @@
       </ul>
     }
 
+    <h4><a href="/logins/new">Create a new account</a></h4>
+    <h4><a href="/">Return Home</a></h4>
   </body>
 </center>
 </html>
-
-
-
-
-
-<h4><a href="/logins/new">Create a new account</a></h4>
-<h4><a href="/">Return Home</a></h4>

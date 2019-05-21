@@ -3,17 +3,22 @@
 <html>
 
 <body>
-  @foreach (var logbook in Model)
+  @for (int i = 0; i < ViewBag.Dinner.Count; i++)
   {
-  @logbook.GetDinnerFood();
+  @ViewBag.Dinner[@i].GetDinnerFood();
   <br />
-  @logbook.GetDinnerSugar();
+  @ViewBag.Dinner[@i].GetDinnerSugar();
   <br />
-  @logbook.GetDinnerStampTime();
+  @ViewBag.Dinner[@i].GetDinnerStampTime();
   <br />
-  @logbook.GetDinnerCarb();
+  @ViewBag.Dinner[@i].GetDinnerCarb();
   <br />
+  <form action="/dinner/deletedinner" method="post">
+      <button class="btn btn-sm" type="submit" name="button">Delete dinner</button>
+  </form>
   }
+<h4><a href="/logins/@Model.GetId()/logbooks/new">Return to logbook</a></h4>
+<h4><a href="/">Return to Home</a></h4>
 </body>
 
 </html>

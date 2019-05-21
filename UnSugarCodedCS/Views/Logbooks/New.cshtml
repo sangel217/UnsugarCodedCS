@@ -1,3 +1,5 @@
+@using UnSugarCodedCS.Models;
+
 <!DOCTYPE html>
 
 <html>
@@ -217,6 +219,47 @@
     });
   </script>
 
+<<<<<<< HEAD
+  <input type="button" id="btnSubmit" value="Breakfast" />
+    <form method="post" action="/logins/@Model.GetId()/logbooks/breakfast" id="breakfastForm" >
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
+    <input type="text" id="food" name="food"/>
+    <input type="text" id="sugarLevel" name="sugarLevel" />
+    <input type="datetime-local" id="stampTime" name="stampTime" value="2018-06-12T19:30"/>
+    <input type="text" id="carb" name="carb" />
+    <input type="submit" id="breakfastSubmit" value="Submit" />
+  </form>
+
+  <input type="button" id="btnSubmitLunch" value="Lunch" />
+    <form method="post" action="/logins/@Model.GetId()/logbooks/lunch" id="lunchForm"/>
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
+    <input type="text" id="foodLunch" name="foodLunch"/>
+    <input type="text" id="sugarLevelLunch" name="sugarLevelLunch" />
+    <input type="datetime-local" id="stampTimeLunch" name="stampTimeLunch" value="2018-06-12T19:30"/>
+    <input type="text" id="carbLunch" name="carbLunch" />
+    <input type="submit" id="LunchSubmit" value="Submit" />
+  </form>
+
+  <input type="button" id="btnSubmitDinner" value="Dinner" />
+    <form method="post" action="/logins/@Model.GetId()/logbooks/dinner" id="dinnerForm">
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
+    <input type="text" id="foodDinner" name="foodDinner"/>
+    <input type="text" id="sugarLevelDinner" name="sugarLevelDinner" />
+    <input type="datetime-local" id="stampTimeDinner" name="stampTimeDinner" value="2018-06-12T19:30"/>
+    <input type="text" id="carbDinner" name="carbDinner" />
+    <input type="submit" id="dinnerSubmit" value="Submit" />
+  </form>
+
+  <input type="button" id="btnSubmitSnack" value="Snack" />
+    <form method="post" action="/logins/@Model.GetId()/logbooks/snack" id="snackForm">
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
+    <input type="text" id="foodSnack" name="foodSnack"/>
+    <input type="text" id="sugarLevelSnack" name="sugarLevelSnack" />
+    <input type="datetime-local" id="stampTimeSnack" name="stampTimeSnack" value="2018-06-12T19:30"/>
+    <input type="text" id="carbSnack" name="carbSnack" />
+    <input type="submit" id="snackSubmit" value="Submit" />
+  </form>
+=======
 
 
 
@@ -356,6 +399,7 @@
 
 
 
+<h4><a href="/">Return to Home</a></h4>
 
 </body>
 
