@@ -245,7 +245,7 @@ public void DeleteBreakfast()
 {
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
-	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , breakfastFood = @breakfastFood , stampTimeBreakfast = @stampTimeBreakfast , breakfastSugar = @breakfastSugar , carbBreakfast = @carbBreakfast;", conn);
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId AND breakfastFood = @breakfastFood AND stampTimeBreakfast = @stampTimeBreakfast AND breakfastSugar = @breakfastSugar AND carbBreakfast = @carbBreakfast;", conn);
 	MySqlParameter SearchIdParameter = new MySqlParameter();
 	SearchIdParameter.ParameterName = "@SearchId";
 	SearchIdParameter.Value = this.GetId();
@@ -277,7 +277,7 @@ public void DeleteLunch()
 {
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
-	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , lunchFood = @lunchFood , stampTimeLunch = @stampTimeLunch , lunchSugar = @lunchSugar , carbLunch = @carbLunch;", conn);
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId AND lunchFood = @lunchFood AND stampTimeLunch = @stampTimeLunch AND lunchSugar = @lunchSugar AND carbLunch = @carbLunch;", conn);
 	MySqlParameter SearchIdParameter = new MySqlParameter();
 	SearchIdParameter.ParameterName = "@SearchId";
 	SearchIdParameter.Value = this.GetId();
@@ -309,7 +309,7 @@ public void DeleteDinner()
 {
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
-	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , dinnerFood = @dinnerFood , stampTimeDinner = @stampTimeDinner , dinnerSugar = @dinnerSugar , carbDinner = @carbDinner;", conn);
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId AND dinnerFood = @dinnerFood AND stampTimeDinner = @stampTimeDinner AND dinnerSugar = @dinnerSugar AND carbDinner = @carbDinner;", conn);
 	MySqlParameter SearchIdParameter = new MySqlParameter();
 	SearchIdParameter.ParameterName = "@SearchId";
 	SearchIdParameter.Value = this.GetId();
@@ -341,7 +341,7 @@ public void DeleteSnack()
 {
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
-	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , snackFood = @snackFood , stampTimeSnack = @stampTimeSnack , snackSugar = @snackSugar , carbSnack = @carbSnack;", conn);
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId AND snackFood = @snackFood AND stampTimeSnack = @stampTimeSnack AND snackSugar = @snackSugar AND carbSnack = @carbSnack;", conn);
 	MySqlParameter SearchIdParameter = new MySqlParameter();
 	SearchIdParameter.ParameterName = "@SearchId";
 	SearchIdParameter.Value = this.GetId();

@@ -1,3 +1,5 @@
+@using UnSugarCodedCS.Models;
+
 <!DOCTYPE html>
 
 <html>
@@ -210,7 +212,8 @@
   </script>
 
   <input type="button" id="btnSubmit" value="Breakfast" />
-    <form method="post" action="/breakfast" id="breakfastForm">
+    <form method="post" action="/logins/@Model.GetId()/logbooks/breakfast" id="breakfastForm" >
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
     <input type="text" id="food" name="food"/>
     <input type="text" id="sugarLevel" name="sugarLevel" />
     <input type="datetime-local" id="stampTime" name="stampTime" value="2018-06-12T19:30"/>
@@ -219,7 +222,8 @@
   </form>
 
   <input type="button" id="btnSubmitLunch" value="Lunch" />
-    <form method="post" action="/lunch" id="lunchForm">
+    <form method="post" action="/logins/@Model.GetId()/logbooks/lunch" id="lunchForm"/>
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
     <input type="text" id="foodLunch" name="foodLunch"/>
     <input type="text" id="sugarLevelLunch" name="sugarLevelLunch" />
     <input type="datetime-local" id="stampTimeLunch" name="stampTimeLunch" value="2018-06-12T19:30"/>
@@ -228,7 +232,8 @@
   </form>
 
   <input type="button" id="btnSubmitDinner" value="Dinner" />
-    <form method="post" action="/dinner" id="dinnerForm">
+    <form method="post" action="/logins/@Model.GetId()/logbooks/dinner" id="dinnerForm">
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
     <input type="text" id="foodDinner" name="foodDinner"/>
     <input type="text" id="sugarLevelDinner" name="sugarLevelDinner" />
     <input type="datetime-local" id="stampTimeDinner" name="stampTimeDinner" value="2018-06-12T19:30"/>
@@ -237,7 +242,8 @@
   </form>
 
   <input type="button" id="btnSubmitSnack" value="Snack" />
-    <form method="post" action="/snack" id="snackForm">
+    <form method="post" action="/logins/@Model.GetId()/logbooks/snack" id="snackForm">
+    <input type="hidden" name="loginId" value="@Model.GetId()" id= "loginId"/>
     <input type="text" id="foodSnack" name="foodSnack"/>
     <input type="text" id="sugarLevelSnack" name="sugarLevelSnack" />
     <input type="datetime-local" id="stampTimeSnack" name="stampTimeSnack" value="2018-06-12T19:30"/>
@@ -245,7 +251,7 @@
     <input type="submit" id="snackSubmit" value="Submit" />
   </form>
 
-
+<h4><a href="/">Return to Home</a></h4>
 
 </body>
 
