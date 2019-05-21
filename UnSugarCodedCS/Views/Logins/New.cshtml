@@ -1,19 +1,78 @@
 @{ Layout = "_Layout"; }
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>login</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel='stylesheet' href='~/css/styles.css'>
+  </head>
+  <body>
+    <div class="container contact">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="contact-info">
+				<img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+				<strong><h3>UnSugar Coded</h3></strong>
+			     <h2>Create User Account</h2>
+			</div>
+		</div>
 
-<h1>UnSugar Coded</h1>
-<h2>Create User Account</h2>
+		<div class="col-md-9">
+			<div class="contact-form">
+            <form action="/logins" method="post">
+				<div class="form-group">
+          <label class="control-label col-sm-2" for="loginName">User name:</label>
+				  <div class="col-sm-10">
+					<input required type="text" class="form-control" name="loginName" id="loginName" placeholder="Enter First Name * Last Name">
+				  </div>
+				</div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="loginEmail">Email address:</label>
+				  <div class="col-sm-10">
+					<input required type="text" class="form-control" name="loginEmail" id="loginEmail" placeholder="Enter Email Address">
+				  </div>
+				</div>
+				<div class="form-group">
+
+	         <label class="control-label col-sm-2" for="loginHeight">Height in inches:</label>
+				  <div class="col-sm-10">
+					<input required type="number" class="form-control" name="loginHeight" id="loginHeight" placeholder="Enter height in inches">
+				  </div>
+				</div>
+
+
+        <div class="form-group">
+
+
+
+           <label class="control-label col-sm-2" for="loginWeight">Weight in pounds:</label>
+          <div class="col-sm-10">
+          <input required type="number" class="form-control"  name="loginWeight" id="loginWeight" placeholder="Enter weight in pounds">
+          </div>
+        </div>
+
+
+
+				<div class="form-group">
+				  <div class="col-sm-offset-2 col-sm-10">
+
+					<button type="submit" class="btn btn-default">Create Profile</button>
+          @* <button class="btn btn-danger"><h4><a href="/"></a>Return to home</h4></button> *@
+				  </div>
+				</div>
+          </form>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+  </body>
+</html>
+
+
+
 <hr>
-
-<form action="/logins" method="post">
-  <label for="loginName">User name:</label>
-  <input type="text" name="loginName" id="loginName">
-  <label for="loginEmail">Email address:</label>
-  <input type="text" name="loginEmail" id="loginEmail">
-  <label for="loginHeight">Height in inches:</label>
-  <input type="text" name="loginHeight" id="loginHeight">
-  <label for="loginWeight">Weight in pounds:</label>
-  <input type="text" name="loginWeight" id="loginWeight">
-  <button type="submit">Create Profile</button>
-</form>
-
-<h4><a href="/"></a>Return to home</h4>
