@@ -108,7 +108,7 @@ public float GetDinnerCarb()
 
 public float GetSnackCarb()
 {
-	return _carbLunch;
+	return _carbSnack;
 }
 
 public DateTime GetBreakfastStampTime()
