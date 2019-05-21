@@ -140,6 +140,7 @@ public int GetUserId()
 	return _userId;
 }
 
+
 public static List<LogBook> GetAll()
 {
 	List<LogBook> allDatas = new List<LogBook> {
@@ -223,6 +224,152 @@ public void Save()
 	conn.Close();
 	if( conn != null) conn.Dispose();
 }
+
+public void Delete()
+{
+	MySqlConnection conn = DB.Connection();
+	conn.Open();
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId;", conn);
+	MySqlParameter SearchIdParameter = new MySqlParameter();
+	SearchIdParameter.ParameterName = "@SearchId";
+	SearchIdParameter.Value = this.GetId();
+	cmd.Parameters.Add(SearchIdParameter);
+	cmd.ExecuteNonQuery();
+	if (conn != null)
+	{
+		conn.Close();
+	}
+}
+
+public void DeleteBreakfast()
+{
+	MySqlConnection conn = DB.Connection();
+	conn.Open();
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , breakfastFood = @breakfastFood , stampTimeBreakfast = @stampTimeBreakfast , breakfastSugar = @breakfastSugar , carbBreakfast = @carbBreakfast;", conn);
+	MySqlParameter SearchIdParameter = new MySqlParameter();
+	SearchIdParameter.ParameterName = "@SearchId";
+	SearchIdParameter.Value = this.GetId();
+	cmd.Parameters.Add(SearchIdParameter);
+	MySqlParameter breakfastFoodParameter = new MySqlParameter();
+	breakfastFoodParameter.ParameterName = "@breakfastFood";
+	breakfastFoodParameter.Value = this.GetBreakfastFood();
+	cmd.Parameters.Add(breakfastFoodParameter);
+	MySqlParameter stampTimeBreakfastParameter = new MySqlParameter();
+	stampTimeBreakfastParameter.ParameterName = "@stampTimeBreakfast";
+	stampTimeBreakfastParameter.Value = this.GetBreakfastStampTime();
+	cmd.Parameters.Add(stampTimeBreakfastParameter);
+	MySqlParameter breakfastSugarParameter = new MySqlParameter();
+	breakfastSugarParameter.ParameterName = "@breakfastSugar";
+	breakfastSugarParameter.Value = this.GetBreakfastSugar();
+	cmd.Parameters.Add(breakfastSugarParameter);
+	MySqlParameter carbBreakfastParameter = new MySqlParameter();
+	carbBreakfastParameter.ParameterName = "@carbBreakfast";
+	carbBreakfastParameter.Value = this.GetBreakfastCarb();
+	cmd.Parameters.Add(carbBreakfastParameter);
+	cmd.ExecuteNonQuery();
+	if (conn != null)
+	{
+		conn.Close();
+	}
+}
+
+public void DeleteLunch()
+{
+	MySqlConnection conn = DB.Connection();
+	conn.Open();
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , lunchFood = @lunchFood , stampTimeLunch = @stampTimeLunch , lunchSugar = @lunchSugar , carbLunch = @carbLunch;", conn);
+	MySqlParameter SearchIdParameter = new MySqlParameter();
+	SearchIdParameter.ParameterName = "@SearchId";
+	SearchIdParameter.Value = this.GetId();
+	cmd.Parameters.Add(SearchIdParameter);
+	MySqlParameter lunchFoodParameter = new MySqlParameter();
+	lunchFoodParameter.ParameterName = "@lunchFood";
+	lunchFoodParameter.Value = this.GetLunchFood();
+	cmd.Parameters.Add(lunchFoodParameter);
+	MySqlParameter stampTimeLunchParameter = new MySqlParameter();
+	stampTimeLunchParameter.ParameterName = "@stampTimeLunch";
+	stampTimeLunchParameter.Value = this.GetLunchStampTime();
+	cmd.Parameters.Add(stampTimeLunchParameter);
+	MySqlParameter lunchSugarParameter = new MySqlParameter();
+	lunchSugarParameter.ParameterName = "@lunchSugar";
+	lunchSugarParameter.Value = this.GetLunchSugar();
+	cmd.Parameters.Add(lunchSugarParameter);
+	MySqlParameter carbLunchParameter = new MySqlParameter();
+	carbLunchParameter.ParameterName = "@carbLunch";
+	carbLunchParameter.Value = this.GetLunchCarb();
+	cmd.Parameters.Add(carbLunchParameter);
+	cmd.ExecuteNonQuery();
+	if (conn != null)
+	{
+		conn.Close();
+	}
+}
+
+public void DeleteDinner()
+{
+	MySqlConnection conn = DB.Connection();
+	conn.Open();
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , dinnerFood = @dinnerFood , stampTimeDinner = @stampTimeDinner , dinnerSugar = @dinnerSugar , carbDinner = @carbDinner;", conn);
+	MySqlParameter SearchIdParameter = new MySqlParameter();
+	SearchIdParameter.ParameterName = "@SearchId";
+	SearchIdParameter.Value = this.GetId();
+	cmd.Parameters.Add(SearchIdParameter);
+	MySqlParameter dinnerFoodParameter = new MySqlParameter();
+	dinnerFoodParameter.ParameterName = "@dinnerFood";
+	dinnerFoodParameter.Value = this.GetDinnerFood();
+	cmd.Parameters.Add(dinnerFoodParameter);
+	MySqlParameter stampTimeDinnerParameter = new MySqlParameter();
+	stampTimeDinnerParameter.ParameterName = "@stampTimeDinner";
+	stampTimeDinnerParameter.Value = this.GetDinnerStampTime();
+	cmd.Parameters.Add(stampTimeDinnerParameter);
+	MySqlParameter dinnerSugarParameter = new MySqlParameter();
+	dinnerSugarParameter.ParameterName = "@dinnerSugar";
+	dinnerSugarParameter.Value = this.GetDinnerSugar();
+	cmd.Parameters.Add(dinnerSugarParameter);
+	MySqlParameter carbDinnerParameter = new MySqlParameter();
+	carbDinnerParameter.ParameterName = "@carbDinner";
+	carbDinnerParameter.Value = this.GetDinnerCarb();
+	cmd.Parameters.Add(carbDinnerParameter);
+	cmd.ExecuteNonQuery();
+	if (conn != null)
+	{
+		conn.Close();
+	}
+}
+
+public void DeleteSnack()
+{
+	MySqlConnection conn = DB.Connection();
+	conn.Open();
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM log_book WHERE user_id = @SearchId , snackFood = @snackFood , stampTimeSnack = @stampTimeSnack , snackSugar = @snackSugar , carbSnack = @carbSnack;", conn);
+	MySqlParameter SearchIdParameter = new MySqlParameter();
+	SearchIdParameter.ParameterName = "@SearchId";
+	SearchIdParameter.Value = this.GetId();
+	cmd.Parameters.Add(SearchIdParameter);
+	MySqlParameter snackFoodParameter = new MySqlParameter();
+	snackFoodParameter.ParameterName = "@snackFood";
+	snackFoodParameter.Value = this.GetSnackFood();
+	cmd.Parameters.Add(snackFoodParameter);
+	MySqlParameter stampTimeSnackParameter = new MySqlParameter();
+	stampTimeSnackParameter.ParameterName = "@stampTimeSnack";
+	stampTimeSnackParameter.Value = this.GetSnackStampTime();
+	cmd.Parameters.Add(stampTimeSnackParameter);
+	MySqlParameter snackSugarParameter = new MySqlParameter();
+	snackSugarParameter.ParameterName = "@snackSugar";
+	snackSugarParameter.Value = this.GetSnackSugar();
+	cmd.Parameters.Add(snackSugarParameter);
+	MySqlParameter carbSnackParameter = new MySqlParameter();
+	carbSnackParameter.ParameterName = "@carbSnack";
+	carbSnackParameter.Value = this.GetSnackCarb();
+	cmd.Parameters.Add(carbSnackParameter);
+	cmd.ExecuteNonQuery();
+	if (conn != null)
+	{
+		conn.Close();
+	}
+}
+
+
 /* public void Edit(string newFood, DateTime newStampTime)
    {
         MySqlConnection conn = DB.Connection();
