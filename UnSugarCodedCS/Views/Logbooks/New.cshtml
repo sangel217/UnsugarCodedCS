@@ -13,6 +13,16 @@
     #breakfastForm {
       display: none;
     }
+    #lunchForm {
+      display: none;
+    }
+    #dinnerForm {
+      display: none;
+    }
+
+    #snackForm {
+      display: none;
+    }
   </style>
 </head>
 
@@ -27,8 +37,40 @@
     $(function() {
       $("#btnSubmit").click(function() {
         $("#btnSubmit").fadeOut();
+        $("#btnSubmitDinner").fadeOut();
+        $("#btnSubmitSnack").fadeOut();
+        $("#btnSubmitLunch").fadeOut();
         $("#breakfastForm").fadeIn();
+
       });
+      $("#btnSubmitLunch").click(function(){
+        $("#btnSubmitLunch").fadeOut();
+        $("#btnSubmitDinner").fadeOut();
+        $("#btnSubmitSnack").fadeOut();
+        $("#lunchForm").fadeIn();
+        $("#btnSubmit").fadeOut();
+
+      });
+
+      $("#btnSubmitDinner").click(function(){
+        $("#btnSubmitDinner").fadeOut();
+        $("#btnSubmitSnack").fadeOut();
+        $("#dinnerForm").fadeIn();
+        $("#btnSubmit").fadeOut();
+        $("#btnSubmitLunch").fadeOut();
+
+      });
+
+      $("#btnSubmitSnack").click(function(){
+        $("#btnSubmitSnack").fadeOut();
+        $("#btnSubmitSnack").fadeOut();
+        $("#lunchForm").fadeIn();
+        $("#btnSubmit").fadeOut();
+        $("#btnSubmitLunch").fadeOut();
+        $("#btnSubmitDinner").fadeOut();
+
+      });
+      <!-- autocomplete breakfast-->
       $("#food").autocomplete({
         source: function(request, response) {
           $.ajax({
@@ -61,18 +103,146 @@
         },
         minLength: 1
       });
+
+      <!-- autocomplete lunch-->
+      $("#foodLunch").autocomplete({
+        source: function(request, response) {
+          $.ajax({
+            url: '/sugar/' + request.term,
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+              response($.map(data, function(item) {
+                return item;
+              }))
+            },
+            error: function(response) {
+              alert(response.responseText);
+            },
+            failure: function(response) {
+              alert(response.responseText);
+            }
+          });
+        },
+        select: function(e, i) {
+          $.ajax({
+            url: '/sugarLevel/' + i.item.value,
+            type: 'post',
+            success: function(data, textStatus, jQxhr) {
+              $("#sugarLevelLunch").val(data);
+            },
+            error: function(jqXhr, textStatus, errorThrown) {}
+          });
+        },
+        minLength: 1
+      });
+
+
+      <!-- autocomplete dinner-->
+      $("#foodDinner").autocomplete({
+        source: function(request, response) {
+          $.ajax({
+            url: '/sugar/' + request.term,
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+              response($.map(data, function(item) {
+                return item;
+              }))
+            },
+            error: function(response) {
+              alert(response.responseText);
+            },
+            failure: function(response) {
+              alert(response.responseText);
+            }
+          });
+        },
+        select: function(e, i) {
+          $.ajax({
+            url: '/sugarLevel/' + i.item.value,
+            type: 'post',
+            success: function(data, textStatus, jQxhr) {
+              $("#sugarLevelDinner").val(data);
+            },
+            error: function(jqXhr, textStatus, errorThrown) {}
+          });
+        },
+        minLength: 1
+      });
+
+      <!-- autocomplete snack-->
+      $("#foodSnack").autocomplete({
+        source: function(request, response) {
+          $.ajax({
+            url: '/sugar/' + request.term,
+            dataType: "json",
+            type: "POST",
+            contentType: "application/json; charset=utf-8",
+            success: function(data) {
+              response($.map(data, function(item) {
+                return item;
+              }))
+            },
+            error: function(response) {
+              alert(response.responseText);
+            },
+            failure: function(response) {
+              alert(response.responseText);
+            }
+          });
+        },
+        select: function(e, i) {
+          $.ajax({
+            url: '/sugarLevel/' + i.item.value,
+            type: 'post',
+            success: function(data, textStatus, jQxhr) {
+              $("#sugarLevelSnack").val(data);
+            },
+            error: function(jqXhr, textStatus, errorThrown) {}
+          });
+        },
+        minLength: 1
+      });
     });
   </script>
 
   <input type="button" id="btnSubmit" value="Breakfast" />
-
-  <form method="post" action="/breakfast" id="breakfastForm">
-    <input type="text" id="food" name="Food"/>
+    <form method="post" action="/breakfast" id="breakfastForm">
+    <input type="text" id="food" name="food"/>
     <input type="text" id="sugarLevel" name="sugarLevel" />
     <input type="datetime-local" id="stampTime" name="stampTime" value="2018-06-12T19:30"/>
     <input type="text" id="carb" name="carb" />
-
     <input type="submit" id="breakfastSubmit" value="Submit" />
+  </form>
+
+  <input type="button" id="btnSubmitLunch" value="Lunch" />
+    <form method="post" action="/lunch" id="lunchForm">
+    <input type="text" id="foodLunch" name="foodLunch"/>
+    <input type="text" id="sugarLevelLunch" name="sugarLevelLunch" />
+    <input type="datetime-local" id="stampTimeLunch" name="stampTimeLunch" value="2018-06-12T19:30"/>
+    <input type="text" id="carbLunch" name="carbLunch" />
+    <input type="submit" id="LunchSubmit" value="Submit" />
+  </form>
+
+  <input type="button" id="btnSubmitDinner" value="Dinner" />
+    <form method="post" action="/dinner" id="dinnerForm">
+    <input type="text" id="foodDinner" name="foodDinner"/>
+    <input type="text" id="sugarLevelDinner" name="sugarLevelDinner" />
+    <input type="datetime-local" id="stampTimeDinner" name="stampTimeDinner" value="2018-06-12T19:30"/>
+    <input type="text" id="carbDinner" name="carbDinner" />
+    <input type="submit" id="dinnerSubmit" value="Submit" />
+  </form>
+
+  <input type="button" id="btnSubmitSnack" value="Snack" />
+    <form method="post" action="/snack" id="snackForm">
+    <input type="text" id="foodSnack" name="foodSnack"/>
+    <input type="text" id="sugarLevelSnack" name="sugarLevelSnack" />
+    <input type="datetime-local" id="stampTimeSnack" name="stampTimeSnack" value="2018-06-12T19:30"/>
+    <input type="text" id="carbSnack" name="carbSnack" />
+    <input type="submit" id="snackSubmit" value="Submit" />
   </form>
 
 
