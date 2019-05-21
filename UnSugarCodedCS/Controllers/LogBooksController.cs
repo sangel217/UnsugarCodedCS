@@ -42,25 +42,25 @@ public ActionResult Create(string food, string sugarLevel, DateTime stampTime, s
 [HttpPost("/lunch")]
 public ActionResult CreateLunch(string foodLunch, string sugarLevelLunch, DateTime stampTimeLunch, string carbLunch)
 {
-	LogBook newLogBook = new LogBook(foodLunch, "", "", "", stampTimeLunch, new DateTime(), new DateTime(), new DateTime(), float.Parse(sugarLevelLunch), 0, 0, 0, float.Parse(carbLunch), 0, 0, 0, 5);
+	LogBook newLogBook = new LogBook( "", foodLunch, "", "", new DateTime(), stampTimeLunch,new DateTime(), new DateTime(),  0, float.Parse(sugarLevelLunch),0, 0, 0,float.Parse(carbLunch),0, 0, 5);
 	newLogBook.Save();
 	List<LogBook> newList = LogBook.GetAll();
-	return View("IndexLunch",newList);
+	return View("Index",newList);
 }
 
 [HttpPost("/dinner")]
 public ActionResult CreateDinner(string foodDinner, string sugarLevelDinner, DateTime stampTimeDinner, string carbDinner)
 {
-	LogBook newLogBook = new LogBook(foodDinner, "", "", "", stampTimeDinner, new DateTime(), new DateTime(), new DateTime(), float.Parse(sugarLevelDinner), 0, 0, 0, float.Parse(carbDinner), 0, 0, 0, 5);
+	LogBook newLogBook = new LogBook( "", "", foodDinner,"",  new DateTime(), new DateTime(), stampTimeDinner,new DateTime(),  0, 0,float.Parse(sugarLevelDinner), 0,  0, 0,float.Parse(carbDinner), 0, 5);
 	newLogBook.Save();
 	List<LogBook> newList = LogBook.GetAll();
-	return View("IndexDinner",newList);
+	return View("Index",newList);
 }
 
 [HttpPost("/snack")]
 public ActionResult CreateSnack(string foodSnack, string sugarLevelSnack, DateTime stampTimeSnack, string carbSnack)
 {
-	LogBook newLogBook = new LogBook(foodSnack, "", "", "", stampTimeSnack, new DateTime(), new DateTime(), new DateTime(), float.Parse(sugarLevelSnack), 0, 0, 0, float.Parse(carbSnack), 0, 0, 0, 5);
+	LogBook newLogBook = new LogBook( "", "", "",foodSnack,  new DateTime(), new DateTime(), new DateTime(), stampTimeSnack, 0, 0, 0, float.Parse(sugarLevelSnack), 0, 0, 0, float.Parse(carbSnack),5);
 	newLogBook.Save();
 	List<LogBook> newList = LogBook.GetAll();
 	return View("Index",newList);
