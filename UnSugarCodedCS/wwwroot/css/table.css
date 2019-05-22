@@ -1,7 +1,14 @@
+
+.panel-heading
+{
+  background-color: #5bc0de;
+  color: white;
+}
+
 .panel
        {
          margin: 5%;
-         background:white;
+         background: #5d6066;
        }
 
 
@@ -22,8 +29,8 @@
        .btn-warning:hover, .btn-warning:focus
        {
          transition: 0.8s;
-         background-color: #428bca;
-         border-color: #428bca;
+         background-color: #f0ad4e;
+         border-color:#f0ad4e;
        }
 
        .panel-footer

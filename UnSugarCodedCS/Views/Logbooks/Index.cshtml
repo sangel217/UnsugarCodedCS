@@ -13,9 +13,6 @@
 
 <body>
 
-  <h4><a href="/logins/@Model.GetId()/logbooks/new">Return to logbook</a></h4>
-  <h4><a href="/">Return to Home</a></h4>
-
   <div class="container-fluid">
     <div class="panel panel-success">
       <div class="panel-heading">
@@ -25,8 +22,10 @@
           </div>
           <div class="col-xs-9 col-sm-9 col-md-9">
             <div class="col-xs-12 col-sm-12 col-md-12">
-              <div class="col-xs-12 col-md-4">
+              <div class="col-xs-12 col-md-8">
+
                 <label> Search </label>
+
                 <div class="form-group">
                   <div class="input-group">
                     <input type="text" class="form-control input-md" name="search">
@@ -36,6 +35,17 @@
                   </div>
                 </div>
               </div>
+              <div class="col-xs-12 col-md-4">
+                <button class="btn btn-dark">
+                  <h5><a href="/logins/@Model.GetId()/logbooks/new">Logbook</a></h5>
+                </button>
+                <button class="btn btn-dark">
+                  <h5><a href="/">Home</a></h5>
+                </button>
+              </div>
+
+
+
             </div>
           </div>
         </div>
