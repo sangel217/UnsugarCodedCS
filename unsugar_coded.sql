@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: May 21, 2019 at 05:53 AM
--- Server version: 5.7.25
--- PHP Version: 7.3.1
+-- Generation Time: May 22, 2019 at 08:34 PM
+-- Server version: 5.6.38
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -21,6 +21,47 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `unsugar_coded` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `unsugar_coded`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `breakfast`
+--
+
+CREATE TABLE `breakfast` (
+  `id` int(11) NOT NULL,
+  `food` varchar(255) NOT NULL,
+  `stampTime` datetime NOT NULL,
+  `sugar` float NOT NULL,
+  `carb` float NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `breakfast`
+--
+
+INSERT INTO `breakfast` (`id`, `food`, `stampTime`, `sugar`, `carb`, `user_id`) VALUES
+(10, 'Zucchini or summer squash', '2019-05-23 12:30:00', 0, 200, 20),
+(11, 'Zucchini or summer squash', '2019-05-23 12:30:00', 0, 200, 20),
+(12, 'Zucchini or summer squash', '2019-05-23 12:30:00', 0, 200, 20),
+(13, 'Zucchini or summer squash', '2019-05-23 12:30:00', 0, 200, 20),
+(14, 'Zucchini or summer squash', '2019-05-23 12:30:00', 0, 200, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dinner`
+--
+
+CREATE TABLE `dinner` (
+  `id` int(11) NOT NULL,
+  `food` varchar(255) NOT NULL,
+  `stampTime` datetime NOT NULL,
+  `sugar` float NOT NULL,
+  `carb` float NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2058,39 +2099,32 @@ INSERT INTO `food_sugar` (`id`, `name`, `added_sugars`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `log_book`
+-- Table structure for table `lunch`
 --
 
-CREATE TABLE `log_book` (
+CREATE TABLE `lunch` (
   `id` int(11) NOT NULL,
-  `breakfastFood` varchar(255) NOT NULL,
-  `lunchFood` varchar(255) NOT NULL,
-  `dinnerFood` varchar(255) NOT NULL,
-  `snackFood` varchar(255) NOT NULL,
-  `stampTimeBreakfast` datetime NOT NULL,
-  `stampTimeLunch` datetime NOT NULL,
-  `stampTimeDinner` datetime NOT NULL,
-  `stampTimeSnack` datetime NOT NULL,
-  `breakfastSugar` float NOT NULL,
-  `lunchSugar` float NOT NULL,
-  `dinnerSugar` float NOT NULL,
-  `snackSugar` float NOT NULL,
-  `carbBreakfast` float NOT NULL,
-  `carbLunch` float NOT NULL,
-  `carbDinner` float NOT NULL,
-  `carbSnack` float NOT NULL,
+  `food` varchar(255) NOT NULL,
+  `stampTime` datetime NOT NULL,
+  `sugar` float NOT NULL,
+  `carb` float NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `log_book`
+-- Table structure for table `snack`
 --
 
-INSERT INTO `log_book` (`id`, `breakfastFood`, `lunchFood`, `dinnerFood`, `snackFood`, `stampTimeBreakfast`, `stampTimeLunch`, `stampTimeDinner`, `stampTimeSnack`, `breakfastSugar`, `lunchSugar`, `dinnerSugar`, `snackSugar`, `carbBreakfast`, `carbLunch`, `carbDinner`, `carbSnack`, `user_id`) VALUES
-(21, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5),
-(22, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5),
-(23, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5),
-(24, 'Zucchini bread', '', '', '', '2018-06-12 19:30:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', '0001-01-01 00:00:00', 35.9018, 0, 0, 0, 12, 0, 0, 0, 5);
+CREATE TABLE `snack` (
+  `id` int(11) NOT NULL,
+  `food` varchar(255) NOT NULL,
+  `stampTime` datetime NOT NULL,
+  `sugar` float NOT NULL,
+  `carb` float NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -2111,25 +2145,23 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `userName`, `userEmail`, `userHeight`, `userWeight`) VALUES
-(1, 'Mariia', 'As@gmail.com', 0, 0),
-(2, 'Mariia', 'As@gmail.com', 0, 0),
-(3, 'Mariia', 'As@gmail.com', 0, 0),
-(4, 'Mariia', 'As@gmail.com', 0, 0),
-(5, 'Mariia', 'As@gmail.com', 0, 0),
-(6, 'Mariia', 'As@gmail.com', 0, 0),
-(7, 'Mariia', 'As@gmail.com', 0, 0),
-(8, 'Mariia', 'As@gmail.com', 0, 0),
-(9, 'Mariia', 'As@gmail.com', 0, 0),
-(10, 'Mariia', 'As@gmail.com', 0, 0),
-(11, 'Mariia', 'As@gmail.com', 0, 0),
-(12, 'Mariia', 'As@gmail.com', 0, 0),
-(13, 'Mariia', 'As@gmail.com', 0, 0),
-(14, 'Mariia', 'As@gmail.com', 0, 0),
-(15, 'Mariia', 'As@gmail.com', 0, 0);
+(20, 'pris', 'a@gmail.com', 30, 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `breakfast`
+--
+ALTER TABLE `breakfast`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `dinner`
+--
+ALTER TABLE `dinner`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `food_sugar`
@@ -2138,9 +2170,15 @@ ALTER TABLE `food_sugar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `log_book`
+-- Indexes for table `lunch`
 --
-ALTER TABLE `log_book`
+ALTER TABLE `lunch`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `snack`
+--
+ALTER TABLE `snack`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -2154,22 +2192,40 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `breakfast`
+--
+ALTER TABLE `breakfast`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `dinner`
+--
+ALTER TABLE `dinner`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `food_sugar`
 --
 ALTER TABLE `food_sugar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2015;
 
 --
--- AUTO_INCREMENT for table `log_book`
+-- AUTO_INCREMENT for table `lunch`
 --
-ALTER TABLE `log_book`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+ALTER TABLE `lunch`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `snack`
+--
+ALTER TABLE `snack`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
