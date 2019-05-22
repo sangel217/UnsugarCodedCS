@@ -12,7 +12,7 @@
 
 <body>
 
-  <h4><a href="/logins/@Model.GetId()/logbooks/new">Return to logbook</a></h4>
+  <h4><a href="/logins/@Model.GetId()/new">Return to logbook</a></h4>
   <h4><a href="/">Return to Home</a></h4>
 
   <div class="container-fluid">
@@ -55,22 +55,22 @@
           <tbody>
 
 
-            @for (int i = 0; i< ViewBag.Breakfast.Count; i++) { <tr class="edit" id="detail">
-              <td id="no" class="text-center"> @ViewBag.Breakfast[@i].GetBreakfastFood() </td>
-              <td id="name" class="text-center"> @ViewBag.Breakfast[@i].GetBreakfastSugar()</td>
-              <td id="mobile" class="text-center">@ViewBag.Breakfast[@i].GetBreakfastStampTime()</td>
-              <td id="mail" class="text-center"> @ViewBag.Breakfast[@i].GetBreakfastCarb()</td>
+            @foreach (var view in ViewBag.Breakfast) { <tr class="edit" id="detail">
+              <td id="no" class="text-center"> @view.GetBreakfastFood() </td>
+              <td id="name" class="text-center"> @view.GetBreakfastSugar()</td>
+              <td id="mobile" class="text-center">@view.GetBreakfastStampTime()</td>
+              <td id="mail" class="text-center"> @view.GetBreakfastCarb()</td>
               <td id="city" class="text-center">
-                <form action="/logins/@Model.GetId()/breakfast/@ViewBag.Breakfast[@i].GetBreakfastFood()/deletebreakfast" method="post">
-                  <button class="btn-danger btn-sm" type="submit" name="button">Delete breakfast</button>
-                </form>
               </td>
               </tr>
-              }
+            }
 
           </tbody>
         </table>
       </div>
+      <form action="/logins/@Model.GetId()/breakfast/delete" method="post">
+        <button class="btn-danger btn-sm" type="submit" name="button">Delete breakfast</button>
+      </form>
 
       <div class="panel-footer">
         <div class="row">

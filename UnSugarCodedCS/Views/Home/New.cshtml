@@ -222,7 +222,7 @@
   <div class="btn from-top" id="btnSubmit">Breakfast</div>
   <form method="post" action="/logins/@Model.GetId()/breakfast" id="breakfastForm">
     <input type="hidden" name="loginId" value="@Model.GetId()" id="loginId" />
-    <div class="container">
+      <div class="container">
       <div class="row">
         <div class="col-sm-4 col-sm-offset-4 login_bg">
           <h2>Breakfast</h2>
@@ -241,7 +241,9 @@
             <input required type="text" id="carb" name="carb" class="form-control">
           </div>
 
+
           <input type="submit" id="breakfastSubmit" value="Submit" class="btn btn-block login_btn" />
+          <h4><a href="/logins/@Model.GetId()/breakfast">Got to Breakfast Logs</a></h4>
         </div>
       </div>
     </div>
@@ -249,7 +251,7 @@
 
 
   <div class="btn from-right" id="btnSubmitLunch">Lunch</div>
-  <form method="post" action="/logins/@Model.GetId()/logbooks/lunch" id="lunchForm">
+  <form method="post" action="/logins/@Model.GetId()/lunch" id="lunchForm">
     <input type="hidden" name="loginId" value="@Model.GetId()" id="loginId" />
     <div class="container">
       <div class="row">
@@ -283,7 +285,7 @@
 
 
   <div class="btn from-middle" id="btnSubmitDinner">Dinner</div>
-  <form method="post" action="/logins/@Model.GetId()/logbooks/dinner" id="dinnerForm">
+  <form method="post" action="/logins/@Model.GetId()/dinner" id="dinnerForm">
     <input type="hidden" name="loginId" value="@Model.GetId()" id="loginId" />
     <div class="container">
       <div class="row">
@@ -318,7 +320,7 @@
 
 
   <div class="btn from-bottom" id="btnSubmitSnack">Snack</div>
-  <form method="post" action="/logins/@Model.GetId()/logbooks/snack" id="snackForm">
+  <form method="post" action="/logins/@Model.GetId()/snack" id="snackForm">
     <input type="hidden" name="loginId" value="@Model.GetId()" id="loginId" />
     <div class="container">
       <div class="row">

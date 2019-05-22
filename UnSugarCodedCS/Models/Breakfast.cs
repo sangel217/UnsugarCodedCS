@@ -24,7 +24,7 @@ private int _userId;
 	_sugar = sugar;
 	_carb = carb;
 	_userId = userId;
-	_id =id;
+	_id = id;
 }
 
 public string GetBreakfastFood()
@@ -106,21 +106,25 @@ public void Save()
 	if( conn != null) conn.Dispose();
 }
 
-public void Delete()
-{
-	MySqlConnection conn = DB.Connection();
-	conn.Open();
-	MySqlCommand cmd = new MySqlCommand("DELETE FROM breakfast WHERE user_id = @SearchId;", conn);
-	MySqlParameter SearchIdParameter = new MySqlParameter();
-	SearchIdParameter.ParameterName = "@SearchId";
-	SearchIdParameter.Value = this.GetId();
-	cmd.Parameters.Add(SearchIdParameter);
-	cmd.ExecuteNonQuery();
-	if (conn != null)
-	{
-		conn.Close();
-	}
-}
+// public void Delete()
+// {
+// 	MySqlConnection conn = DB.Connection();
+// 	conn.Open();
+// 	MySqlCommand cmd = new MySqlCommand("DELETE FROM breakfast WHERE user_id = @SearchId; DELETE FROM breakfast WHERE id = @breakfastId;", conn);
+// 	MySqlParameter SearchIdParameter = new MySqlParameter();
+// 	SearchIdParameter.ParameterName = "@SearchId";
+// 	SearchIdParameter.Value = this.GetId();
+//   MySqlParameter breakfastIdParameter = new MySqlParameter();
+// 	breakfastIdParameter.ParameterName = "@breakfastId";
+// 	breakfastIdParameter.Value = this.GetId();
+// 	cmd.Parameters.Add(breakfastIdParameter);
+//   cmd.Parameters.Add(SearchIdParameter);
+// 	cmd.ExecuteNonQuery();
+// 	if (conn != null)
+// 	{
+// 		conn.Close();
+// 	}
+// }
 
 
 public void Edit(string newFood, DateTime newStampTime, float newSugar, float newCarb)
