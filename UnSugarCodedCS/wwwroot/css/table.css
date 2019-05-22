@@ -1,8 +1,20 @@
 
+
+.panel-success>.panel-heading
+{
+    background-color: #5bc0de;
+    color: white;
+}
 .panel-heading
 {
   background-color: #5bc0de;
   color: white;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color:  #ff4d4d;
+    border-color: #eea236;
 }
 
 .panel
@@ -18,7 +30,7 @@
        }
        tr:hover
        {
-         background-color: #f0ad4e;
+         background-color: red;
          transition: 0.5s;
        }
        .btn-warning
