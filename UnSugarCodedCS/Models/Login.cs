@@ -230,50 +230,137 @@ public void Delete()
 	}
 }
 
-public List<LogBook> GetLogBooks()
-   {
-        List<LogBook> allLoginLogBooks = new List<LogBook> {
-        };
-        MySqlConnection conn = DB.Connection();
-        conn.Open();
-        var cmd = conn.CreateCommand() as MySqlCommand;
-        cmd.CommandText = @"SELECT * FROM log_book WHERE user_id = @user_id;";
-        MySqlParameter userId = new MySqlParameter();
-        userId.ParameterName = "@user_id";
-        userId.Value = this._id;
-        cmd.Parameters.Add(userId);
-        var rdr = cmd.ExecuteReader() as MySqlDataReader;
-        while(rdr.Read())
-        {
-					int loogBookId = rdr.GetInt32(0);
-					string breakfastFood = rdr.GetString(1);
-					string lunchFood = rdr.GetString(2);
-					string dinnerFood = rdr.GetString(3);
-					string snackFood = rdr.GetString(4);
-					DateTime stampTimeB = rdr.GetDateTime(5);
-					DateTime stampTimeL = rdr.GetDateTime(6);
-					DateTime stampTimeD = rdr.GetDateTime(7);
-					DateTime stampTimeS = rdr.GetDateTime(8);
-					float breakfastSugar = rdr.GetFloat(9);
-					float lunchSugar = rdr.GetFloat(10);
-					float dinnerSugar = rdr.GetFloat(11);
-					float snackSugar = rdr.GetFloat(12);
-					float breakfastCarb = rdr.GetFloat(13);
-					float lunchCarb = rdr.GetFloat(14);
-					float dinnerCarb = rdr.GetFloat(15);
-					float snackCarb = rdr.GetFloat(16);
-					int user_id = rdr.GetInt32(17);
-					LogBook newLogBook = new LogBook(breakfastFood, lunchFood, dinnerFood, snackFood, stampTimeB, stampTimeL, stampTimeD, stampTimeS, breakfastSugar, lunchSugar, dinnerSugar, snackSugar, breakfastCarb, lunchCarb, dinnerCarb, snackCarb, user_id);
+public List<Breakfast> GetBreakfasts()
+{
+    List<Breakfast> allLoginBreakfasts = new List<Breakfast> {
+    };
+    MySqlConnection conn = DB.Connection();
+    conn.Open();
+    var cmd = conn.CreateCommand() as MySqlCommand;
+    cmd.CommandText = @"SELECT * FROM breakfast WHERE user_id = @user_id;";
+    MySqlParameter userId = new MySqlParameter();
+    userId.ParameterName = "@user_id";
+    userId.Value = this._id;
+    cmd.Parameters.Add(userId);
+    var rdr = cmd.ExecuteReader() as MySqlDataReader;
+    while(rdr.Read())
+    {
+			int breakfastId = rdr.GetInt32(0);
+			string food = rdr.GetString(1);
+			DateTime stampTime = rdr.GetDateTime(2);
+			float sugar = rdr.GetFloat(3);
+			float carb = rdr.GetFloat(4);
+			int user_id = rdr.GetInt32(5);
+			Breakfast newBreakfast = new Breakfast(food, stampTime, sugar, carb, user_id);
 
-          allLoginLogBooks.Add(newLogBook);
-        }
-        conn.Close();
-        if (conn != null)
-        {
-                conn.Dispose();
-        }
-        return allLoginLogBooks;
+      allLoginBreakfasts.Add(newBreakfast);
+    }
+    conn.Close();
+    if (conn != null)
+    {
+            conn.Dispose();
+    }
+    return allLoginBreakfasts;
+	}
+
+	public List<Lunch> GetLunchs()
+	{
+	    List<Lunch> allLoginLunchs = new List<Lunch> {
+	    };
+	    MySqlConnection conn = DB.Connection();
+	    conn.Open();
+	    var cmd = conn.CreateCommand() as MySqlCommand;
+	    cmd.CommandText = @"SELECT * FROM lunch WHERE user_id = @user_id;";
+	    MySqlParameter userId = new MySqlParameter();
+	    userId.ParameterName = "@user_id";
+	    userId.Value = this._id;
+	    cmd.Parameters.Add(userId);
+	    var rdr = cmd.ExecuteReader() as MySqlDataReader;
+	    while(rdr.Read())
+	    {
+				int lunchId = rdr.GetInt32(0);
+				string food = rdr.GetString(1);
+				DateTime stampTime = rdr.GetDateTime(2);
+				float sugar = rdr.GetFloat(3);
+				float carb = rdr.GetFloat(4);
+				int user_id = rdr.GetInt32(5);
+				Lunch newLunch = new Lunch(food, stampTime, sugar, carb, user_id);
+
+	      allLoginLunchs.Add(newLunch);
+	    }
+	    conn.Close();
+	    if (conn != null)
+	    {
+	            conn.Dispose();
+	    }
+	    return allLoginLunchs;
+		}
+
+		public List<Dinner> GetDinners()
+		{
+		    List<Dinner> allLoginDinners = new List<Dinner> {
+		    };
+		    MySqlConnection conn = DB.Connection();
+		    conn.Open();
+		    var cmd = conn.CreateCommand() as MySqlCommand;
+		    cmd.CommandText = @"SELECT * FROM dinner WHERE user_id = @user_id;";
+		    MySqlParameter userId = new MySqlParameter();
+		    userId.ParameterName = "@user_id";
+		    userId.Value = this._id;
+		    cmd.Parameters.Add(userId);
+		    var rdr = cmd.ExecuteReader() as MySqlDataReader;
+		    while(rdr.Read())
+		    {
+					int dinnerId = rdr.GetInt32(0);
+					string food = rdr.GetString(1);
+					DateTime stampTime = rdr.GetDateTime(2);
+					float sugar = rdr.GetFloat(3);
+					float carb = rdr.GetFloat(4);
+					int user_id = rdr.GetInt32(5);
+					Dinner newDinner = new Dinner(food, stampTime, sugar, carb, user_id);
+
+		      allLoginDinners.Add(newDinner);
+		    }
+		    conn.Close();
+		    if (conn != null)
+		    {
+		            conn.Dispose();
+		    }
+		    return allLoginDinners;
 			}
+
+			public List<Snack> GetSnacks()
+			{
+			    List<Snack> allLoginSnacks = new List<Snack> {
+			    };
+			    MySqlConnection conn = DB.Connection();
+			    conn.Open();
+			    var cmd = conn.CreateCommand() as MySqlCommand;
+			    cmd.CommandText = @"SELECT * FROM snack WHERE user_id = @user_id;";
+			    MySqlParameter userId = new MySqlParameter();
+			    userId.ParameterName = "@user_id";
+			    userId.Value = this._id;
+			    cmd.Parameters.Add(userId);
+			    var rdr = cmd.ExecuteReader() as MySqlDataReader;
+			    while(rdr.Read())
+			    {
+						int snackId = rdr.GetInt32(0);
+						string food = rdr.GetString(1);
+						DateTime stampTime = rdr.GetDateTime(2);
+						float sugar = rdr.GetFloat(3);
+						float carb = rdr.GetFloat(4);
+						int user_id = rdr.GetInt32(5);
+						Snack newSnack = new Snack(food, stampTime, sugar, carb, user_id);
+
+			      allLoginSnacks.Add(newSnack);
+			    }
+			    conn.Close();
+			    if (conn != null)
+			    {
+			            conn.Dispose();
+			    }
+			    return allLoginSnacks;
+				}
 
 }
 }

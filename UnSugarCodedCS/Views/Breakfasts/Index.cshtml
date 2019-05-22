@@ -61,7 +61,7 @@
               <td id="mobile" class="text-center">@ViewBag.Breakfast[@i].GetBreakfastStampTime()</td>
               <td id="mail" class="text-center"> @ViewBag.Breakfast[@i].GetBreakfastCarb()</td>
               <td id="city" class="text-center">
-                <form action="/logins/@Model.GetId()/logbooks/breakfast/deletebreakfast" method="post">
+                <form action="/logins/@Model.GetId()/breakfast/@ViewBag.Breakfast[@i].GetBreakfastFood()/deletebreakfast" method="post">
                   <button class="btn-danger btn-sm" type="submit" name="button">Delete breakfast</button>
                 </form>
               </td>

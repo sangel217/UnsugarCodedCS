@@ -45,18 +45,18 @@ namespace UnSugarCodedCS.Controllers
       return View("Index", allLogins);
     }
 
-    [HttpPost("/logins/{loginId}/delete")]
-    public ActionResult Delete(int loginId)
-    {
-      Login login = Login.Find(loginId);
-      List<LogBook> loginLogBooks = login.GetLogBooks();
-      foreach(LogBook logbook in loginLogBooks)
-      {
-        logbook.Delete();
-      }
-      login.Delete();
-      return RedirectToAction("Index");
-    }
+    // [HttpPost("/logins/{loginId}/delete")]
+    // public ActionResult Delete(int loginId)
+    // {
+    //   Login login = Login.Find(loginId);
+    //   List<LogBook> loginLogBooks = login.GetBreakfasts().GetLunchs().GetDinners().GetSnacks();
+    //   foreach(LogBook logbook in loginLogBooks)
+    //   {
+    //     logbook.Delete();
+    //   }
+    //   login.Delete();
+    //   return RedirectToAction("Index");
+    // }
 
   }
   }
