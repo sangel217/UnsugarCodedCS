@@ -41,7 +41,7 @@ body{
 
 
   .material_list_group .material_list_group_item {
-    color: #fff;
+    color: red;
     font-weight: 400;
     border-radius: 0;
     background-color: #cbd9ef;
