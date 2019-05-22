@@ -17,7 +17,10 @@
     <h1 style="color:white;">UnSugar Coded</h1>
 
     <h3 style="color:white;">User Accounts</h3>
-
+    <form method="post" id="searchform" action="/search">
+      <input name="userInput" id="userInput" type="text">
+      <button type="submit">Search</button>
+    </form>
     @if(Model.Count != 0)
     {
     <ul class="list-group material_list_group">
