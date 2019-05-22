@@ -13,10 +13,10 @@ public class LunchsController : Controller
 {
 
 [HttpPost("/logins/{loginId}/lunch")]
-public ActionResult Create(string food, string sugarLevel, DateTime stampTime, string carb, int loginId)
+public ActionResult Create(string foodLunch, string sugarLevelLunch, DateTime stampTimeLunch, string carbLunch, int loginId)
 {
 	Login foundLogin = Login.Find(loginId);
-	Lunch newLunch = new Lunch(food, stampTime, float.Parse(sugarLevel), float.Parse(carb), loginId);
+	Lunch newLunch = new Lunch(foodLunch, stampTimeLunch, float.Parse(sugarLevelLunch), float.Parse(carbLunch), loginId);
 	newLunch.Save();
 	List<Lunch> newList = foundLogin.GetLunchs();
 

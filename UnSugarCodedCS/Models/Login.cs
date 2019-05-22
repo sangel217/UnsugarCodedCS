@@ -72,12 +72,41 @@ public override bool Equals(System.Object otherLogin)
 
 public static List<Login> GetAll()
 {
+
 	List<Login> allLogins = new List<Login> {
 	};
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
 	var cmd = conn.CreateCommand() as MySqlCommand;
 	cmd.CommandText = @"SELECT * FROM users;";
+	var rdr = cmd.ExecuteReader() as MySqlDataReader;
+	while(rdr.Read())
+	{
+		int LoginId = rdr.GetInt32(0);
+		string LoginName = rdr.GetString(1);
+		string LoginEmail = rdr.GetString(2);
+		int LoginHeight = rdr.GetInt32(3);
+		int LoginWeight = rdr.GetInt32(4);
+		Login newLogin = new Login(LoginName, LoginEmail, LoginHeight, LoginWeight, LoginId);
+		allLogins.Add(newLogin);
+	}
+	conn.Close();
+	if (conn != null)
+	{
+		conn.Dispose();
+	}
+	return allLogins;
+}
+
+public static List<Login> SearchUser(string userInput)
+{
+
+	List<Login> allLogins = new List<Login> {
+	};
+	MySqlConnection conn = DB.Connection();
+	conn.Open();
+	var cmd = conn.CreateCommand() as MySqlCommand;
+	cmd.CommandText = @"SELECT * FROM users WHERE userName LIKE '"+userInput+"%' ;";
 	var rdr = cmd.ExecuteReader() as MySqlDataReader;
 	while(rdr.Read())
 	{

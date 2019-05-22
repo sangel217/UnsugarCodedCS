@@ -6,6 +6,10 @@
 <head>
   <meta charset="utf-8">
   <title></title>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,28 +22,83 @@
 
     <h3 style="color:white;">User Accounts</h3>
 
+    <nav class="navbar navbar-inverse">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-3">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/">Home</a></li>
+          <li><a href="/logins/new">New account</a></li>
+
+          <li>
+            <a class="btn btn-default btn-outline btn-circle collapsed" data-toggle="collapse" href="#nav-collapse3" aria-expanded="false" aria-controls="nav-collapse3">Search</a>
+          </li>
+        </ul>
+        <div class="collapse nav navbar-nav nav-collapse slide-down" id="nav-collapse3">
+          <form class="navbar-form navbar-right" role="search" method="post" id="searchform" action="/search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" name="userInput" id="userInput" />
+            </div>
+            <button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+          </form>
+        </div>
+
+      </div>
+    </nav>
+
+
     @if(Model.Count != 0)
     {
     <ul class="list-group material_list_group">
       @foreach(var login in Model)
       {
+
       <li class="list-group-item material_list_group_item">
         <h4><a href="/logins/@login.GetId()/new">@login.GetName()</a></h4>
 
-        <button class=" btn-sm">
-          <a href="/logins/@login.GetId()/edit">Edit Profile</a>
-        </button>
+
+
+
+
+
+        <button type="button" data-toggle="modal" data-target="#edit" data-uid="2" class=" btn-warning btn-sm"><span> <a href="/logins/@login.GetId()/edit" class="glyphicon glyphicon-pencil"></a></span></button>
+
+
         <form action="/logins/@login.GetId()/delete" method="post">
-          <button class=" btn-danger btn-sm" type="submit" name="button">Delete Profile</button>
+          <button type="submit" data-toggle="modal" data-target="#delete" data-uid="2" class=" btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></button>
         </form>
+
       </li>
+
       }
     </ul>
     }
 
-    <h4><a href="/logins/new">Create a new account</a></h4>
-    <h4><a href="/">Return Home</a></h4>
+
+
   </body>
 </center>
+
+
+</html>
+
+
+
+
+<!-- Second navbar for search -->
+
+
+
+
+
 
 </html>

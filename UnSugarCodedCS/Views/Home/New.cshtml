@@ -21,19 +21,15 @@
       font-family: Arial;
       font-size: 10pt;
     }
-
     #breakfastForm {
       display: none;
     }
-
     #lunchForm {
       display: none;
     }
-
     #dinnerForm {
       display: none;
     }
-
     #snackForm {
       display: none;
     }
@@ -51,7 +47,6 @@
         $("#btnSubmitSnack").fadeOut();
         $("#btnSubmitLunch").fadeOut();
         $("#breakfastForm").fadeIn();
-
       });
       $("#btnSubmitLunch").click(function() {
         $("#btnSubmitLunch").fadeOut();
@@ -59,18 +54,14 @@
         $("#btnSubmitSnack").fadeOut();
         $("#lunchForm").fadeIn();
         $("#btnSubmit").fadeOut();
-
       });
-
       $("#btnSubmitDinner").click(function() {
         $("#btnSubmitDinner").fadeOut();
         $("#btnSubmitSnack").fadeOut();
         $("#dinnerForm").fadeIn();
         $("#btnSubmit").fadeOut();
         $("#btnSubmitLunch").fadeOut();
-
       });
-
       $("#btnSubmitSnack").click(function() {
         $("#btnSubmitSnack").fadeOut();
         $("#btnSubmitSnack").fadeOut();
@@ -78,7 +69,6 @@
         $("#btnSubmit").fadeOut();
         $("#btnSubmitLunch").fadeOut();
         $("#btnSubmitDinner").fadeOut();
-
       });
       $("#food").autocomplete({
         source: function(request, response) {
@@ -112,8 +102,6 @@
         },
         minLength: 1
       });
-
-
       $("#foodLunch").autocomplete({
         source: function(request, response) {
           $.ajax({
@@ -146,9 +134,6 @@
         },
         minLength: 1
       });
-
-
-
       $("#foodDinner").autocomplete({
         source: function(request, response) {
           $.ajax({
@@ -181,8 +166,6 @@
         },
         minLength: 1
       });
-
-
       $("#foodSnack").autocomplete({
         source: function(request, response) {
           $.ajax({
@@ -222,7 +205,7 @@
   <div class="btn from-top" id="btnSubmit">Breakfast</div>
   <form method="post" action="/logins/@Model.GetId()/breakfast" id="breakfastForm">
     <input type="hidden" name="loginId" value="@Model.GetId()" id="loginId" />
-      <div class="container">
+    <div class="container">
       <div class="row">
         <div class="col-sm-4 col-sm-offset-4 login_bg">
           <h2>Breakfast</h2>
@@ -230,20 +213,21 @@
             <input placeholder="*Enter food" required type="text" id="food" name="food" class="form-control" />
           </div>
           <div class="form-group">
-            <input required type="text" id="sugarLevel" name="sugarLevel" class="form-control">
+            <input placeholder="*Carbs" required type="text" id="sugarLevel" name="sugarLevel" class="form-control">
           </div>
 
           <div class="form-group">
-            <input required type="datetime-local" id="stampTime" name="stampTime" class="form-control">
+            <input placeholder="*Stamp Time" required type="datetime-local" id="stampTime" name="stampTime" class="form-control">
           </div>
 
           <div class="form-group">
-            <input required type="text" id="carb" name="carb" class="form-control">
+            <input placeholder="*Blood Sugar" required type="text" id="carb" name="carb" class="form-control">
           </div>
-
 
           <input type="submit" id="breakfastSubmit" value="Submit" class="btn btn-block login_btn" />
-          <h4><a href="/logins/@Model.GetId()/breakfast">Got to Breakfast Logs</a></h4>
+          <div class="form-group">
+            <h4><a href="/" style="color:#FF0000;"></a></h4>
+          </div>
         </div>
       </div>
     </div>
@@ -258,25 +242,28 @@
         <div class="col-sm-4 col-sm-offset-4 login_bg">
           <h2>Lunch</h2>
           <div class="form-group">
-            <input required type="text" id="foodLunch" name="foodLunch" class="form-control" />
+            <input placeholder="*Enter food" required type="text" id="foodLunch" name="foodLunch" class="form-control" />
           </div>
           <div class="form-group">
-            <input required type="text" id="sugarLevelLunch" name="sugarLevelLunch" class="form-control">
-          </div>
-
-
-
-          <div class="form-group">
-            <input required type="datetime-local" id="stampTimeLunch" name="stampTimeLunch" class="form-control">
+            <input placeholder="*Carbs" required type="text" id="sugarLevelLunch" name="sugarLevelLunch" class="form-control">
           </div>
 
 
+
           <div class="form-group">
-            <input required type="text" id="carbLunch" name="carbLunch" class="form-control">
+            <input placeholder="*Stamp Time" required type="datetime-local" id="stampTimeLunch" name="stampTimeLunch" class="form-control">
+          </div>
+
+
+          <div class="form-group">
+            <input placeholder="*Blood Sugar" required type="text" id="carbLunch" name="carbLunch" class="form-control">
           </div>
 
 
           <input type="submit" id="LunchSubmit" value="Submit" class="btn btn-block login_btn" />
+          <div class="form-group">
+            <h4><a href="/" style="color:#FF0000;"></a></h4>
+          </div>
         </div>
       </div>
     </div>
@@ -292,25 +279,28 @@
         <div class="col-sm-4 col-sm-offset-4 login_bg">
           <h2>Dinner</h2>
           <div class="form-group">
-            <input required type="text" id="foodDinner" name="foodDinner" class="form-control" />
+            <input placeholder="*Enter food" required type="text" id="foodDinner" name="foodDinner" class="form-control" />
           </div>
           <div class="form-group">
-            <input required type="text" id="sugarLevelDinner" name="sugarLevelDinner" class="form-control">
-          </div>
-
-
-
-          <div class="form-group">
-            <input required type="datetime-local" id="stampTimeDinner" name="stampTimeDinner" class="form-control">
+            <input placeholder="*Carbs" required type="text" id="sugarLevelDinner" name="sugarLevelDinner" class="form-control">
           </div>
 
 
+
           <div class="form-group">
-            <input required type="text" id="carbDinner" name="carbDinner" class="form-control">
+            <input placeholder="*Stamp Time" required type="datetime-local" id="stampTimeDinner" name="stampTimeDinner" class="form-control">
+          </div>
+
+
+          <div class="form-group">
+            <input placeholder="*Blood Sugar" required type="text" id="carbDinner" name="carbDinner" class="form-control">
           </div>
 
 
           <input type="submit" id="dinnerSubmit" value="Submit" class="btn btn-block login_btn" />
+          <div class="form-group">
+            <h4><a href="/" style="color:#FF0000;"></a></h4>
+          </div>
         </div>
       </div>
     </div>
@@ -327,33 +317,39 @@
         <div class="col-sm-4 col-sm-offset-4 login_bg">
           <h2>Snack</h2>
           <div class="form-group">
-            <input required type="text" id="foodSnack" name="foodSnack" class="form-control" />
+            <input placeholder="*Enter food" required type="text" id="foodSnack" name="foodSnack" class="form-control" />
           </div>
           <div class="form-group">
-            <input required type="text" id="sugarLevelSnack" name="sugarLevelSnack" class="form-control">
+            <input placeholder="*Carbs" required type="text" id="sugarLevelSnack" name="sugarLevelSnack" class="form-control">
           </div>
 
-
-
-          <div class="form-group">
-            <input required type="datetime-local" id="stampTimeSnack" name="stampTimeSnack" class="form-control">
-          </div>
 
 
           <div class="form-group">
-            <input required type="text" id="carbSnack" name="carbSnack" class="form-control">
+            <input placeholder="*Stamp Time" required type="datetime-local" id="stampTimeSnack" name="stampTimeSnack" class="form-control">
           </div>
 
+
+          <div class="form-group">
+            <input placeholder="*Blood Sugar" required type="text" id="carbSnack" name="carbSnack" class="form-control">
+          </div>
+          
 
           <input type="submit" id="snackSubmit" value="Submit" class="btn btn-block login_btn" />
+          <div class="form-group">
+            <h4><a href="/" style="color:#FF0000;"></a></h4>
+          </div>
         </div>
       </div>
     </div>
   </form>
 
 
+  <div class="form-group">
+    <h4><a href="/" style="color:#FF0000;">Return to Home</a></h4>
+  </div>
 
-  <h4><a href="/">Return to Home</a></h4>
+
 
 </body>
 

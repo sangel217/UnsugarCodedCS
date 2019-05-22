@@ -106,21 +106,21 @@ public void Save()
 	if( conn != null) conn.Dispose();
 }
 
-// public void Delete()
-// {
-// 	MySqlConnection conn = DB.Connection();
-// 	conn.Open();
-// 	MySqlCommand cmd = new MySqlCommand("DELETE FROM dinner WHERE user_id = @SearchId;", conn);
-// 	MySqlParameter SearchIdParameter = new MySqlParameter();
-// 	SearchIdParameter.ParameterName = "@SearchId";
-// 	SearchIdParameter.Value = this.GetId();
-// 	cmd.Parameters.Add(SearchIdParameter);
-// 	cmd.ExecuteNonQuery();
-// 	if (conn != null)
-// 	{
-// 		conn.Close();
-// 	}
-// }
+public void Delete()
+{
+	MySqlConnection conn = DB.Connection();
+	conn.Open();
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM dinner WHERE user_id = @SearchId;", conn);
+	MySqlParameter SearchIdParameter = new MySqlParameter();
+	SearchIdParameter.ParameterName = "@SearchId";
+	SearchIdParameter.Value = this.GetId();
+	cmd.Parameters.Add(SearchIdParameter);
+	cmd.ExecuteNonQuery();
+	if (conn != null)
+	{
+		conn.Close();
+	}
+}
 
 
 public void Edit(string newFood, DateTime newStampTime, float newSugar, float newCarb)

@@ -13,10 +13,10 @@ public class SnacksController : Controller
 {
 
 [HttpPost("/logins/{loginId}/snack")]
-public ActionResult Create(string food, string sugarLevel, DateTime stampTime, string carb, int loginId)
+public ActionResult Create(string foodSnack, string sugarLevelSnack, DateTime stampTimeSnack, string carbSnack, int loginId)
 {
 	Login foundLogin = Login.Find(loginId);
-	Snack newSnack = new Snack(food, stampTime, float.Parse(sugarLevel), float.Parse(carb), loginId);
+	Snack newSnack = new Snack(foodSnack, stampTimeSnack, float.Parse(sugarLevelSnack), float.Parse(carbSnack), loginId);
 	newSnack.Save();
 	List<Snack> newList = foundLogin.GetSnacks();
 

@@ -1,7 +1,26 @@
+
+
+.panel-success>.panel-heading
+{
+    background-color: #5bc0de;
+    color: white;
+}
+.panel-heading
+{
+  background-color: #5bc0de;
+  color: white;
+}
+
+.btn-warning {
+    color: #fff;
+    background-color:  #ff4d4d;
+    border-color: #eea236;
+}
+
 .panel
        {
          margin: 5%;
-         background: transparent;
+         background: #5d6066;
        }
 
 
@@ -11,7 +30,7 @@
        }
        tr:hover
        {
-         background-color: #f0ad4e;
+         background-color: red;
          transition: 0.5s;
        }
        .btn-warning
@@ -22,8 +41,8 @@
        .btn-warning:hover, .btn-warning:focus
        {
          transition: 0.8s;
-         background-color: #428bca;
-         border-color: #428bca;
+         background-color: #f0ad4e;
+         border-color:#f0ad4e;
        }
 
        .panel-footer
