@@ -12,7 +12,7 @@ A journal where a user can track their sleep, medications, food, drink, and exer
 
 ### Specs
 | Spec |
-| :-------------     | 
+| :-------------     |
 | User must fill out at least 1 field before saving the journal entry |User clicks submit on empty page|Pop-up asking them to enter data|
 | User can fill out a form with amount of sleep | User enters number |Journal entry created with that amount of sleep|
 | User cannot put anything but a number in the field | Input: blah | Output: Ask user for valid sleep
@@ -31,11 +31,11 @@ A journal where a user can track their sleep, medications, food, drink, and exer
 | User can track their general journal entries |User clicks 'Track general' button|A list with clickable entries is generated of all journal entries which have contents for that field with the contents of that field displayed|
 
 ## Description
-![Alt text](/img/screen1.png)
-![Alt text](/img/screen2.png)
-![Alt text](/img/screen3.png)
-![Alt text](/img/screen4.png)
-![Alt text](/img/screen5.png)
+![Alt text](/img/1.png)
+![Alt text](/img/2.png)
+![Alt text](/img/3.png)
+![Alt text](/img/4.png)
+![Alt text](/img/5.png)
 
 
 
