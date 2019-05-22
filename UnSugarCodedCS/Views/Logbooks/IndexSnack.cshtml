@@ -2,11 +2,21 @@
 
 <html>
 
+<head>
+
+  <!-- Style -->
+  <link href="assets/css/bootstrap.css" rel="stylesheet" />
+  <link href="assets/css/fresh-bootstrap-table.css" rel="stylesheet" />
+
+  <!-- Fonts and icons -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+
+</head>
+
 <body>
-  @for (int i = 0; i < ViewBag.Snack.Count; i++)
-  {
-  @ViewBag.Snack[@i].GetSnackFood();
-  <br />
+  @for (int i = 0; i
+  < ViewBag.Snack.Count; i++) { @ViewBag.Snack[@i].GetSnackFood(); <br />
   @ViewBag.Snack[@i].GetSnackSugar();
   <br />
   @ViewBag.Snack[@i].GetSnackStampTime();
@@ -14,11 +24,11 @@
   @ViewBag.Snack[@i].GetSnackCarb();
   <br />
   <form action="/snack/deletesnack" method="post">
-      <button class="btn btn-sm" type="submit" name="button">Delete Snack</button>
+    <button class="btn btn-sm" type="submit" name="button">Delete Snack</button>
   </form>
   }
-<h4><a href="/logins/@Model.GetId()/logbooks/new">Return to logbook</a></h4>
-<h4><a href="/">Return to Home</a></h4>
+  <h4><a href="/logins/@Model.GetId()/logbooks/new">Return to logbook</a></h4>
+  <h4><a href="/">Return to Home</a></h4>
 </body>
 
 </html>

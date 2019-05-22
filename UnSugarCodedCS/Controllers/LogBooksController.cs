@@ -14,25 +14,20 @@ public class LogBooksController : Controller
 // [HttpGet("/logins/{id}/logbooks/breakfast")]
 // public ActionResult Index(id)
 // {
-// 	Login login = Login.Find(id);
-// 	return View();
+//      Login login = Login.Find(id);
+//      return View();
 // }
 [HttpPost("/sugar/{userInput}")]
 public JsonResult GetSugarNames ( string userInput)
 {
 	List<string> allSugars = FoodSugar.GetAllFoodNames(userInput);
+
 	return Json(allSugars);
 }
 
 [HttpPost("/sugarLevel/{name}")]
 public JsonResult GetSugarLevels (string name)
 {
-<<<<<<< HEAD
-=======
-
-	float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
-
->>>>>>> eb8e5e5aa6e6080954610faf4d1a1974bcbc20a6
 
 	float allSugarLevels = FoodSugar.GetAllSugarLevel(name);
 	return Json(allSugarLevels.ToString());
@@ -41,8 +36,8 @@ public JsonResult GetSugarLevels (string name)
 [HttpGet("/logins/{loginId}/logbooks/new")]
 public ActionResult New(int loginId)
 {
-   Login login = Login.Find(loginId);
-   return View(login);
+	Login login = Login.Find(loginId);
+	return View(login);
 }
 
 [HttpPost("/logins/{loginId}/logbooks/breakfast")]
@@ -102,7 +97,7 @@ public ActionResult AllLogBooks()
 // [HttpPost("/logins/{id}/logbooks/breakfast/deletebreakfast")]
 // public ActionResult DeleteBreakfast(int id)
 // {
-// 	Login login = Login.Find(id);
+//      Login login = Login.Find(id);
 //   List<LogBook> loginLogBooks = login.GetLogBooks();
 //   foreach(LogBook logbook in loginLogBooks)
 //   {
@@ -114,28 +109,28 @@ public ActionResult AllLogBooks()
 // [HttpPost("/logins/{id}/logbooks/lunch/deletelunch")]
 // public ActionResult DeleteLunch()
 // {
-// 	LogBook newLogBook = new LogBook( "", "", "","",  new DateTime(), new DateTime(), new DateTime(),new DateTime(), 0, 0,0, 0, 0, 0,0, 0, 0);
-// 	newLogBook.DeleteLunch();
-// 	List<LogBook> newList = LogBook.GetAll();
-// 	return RedirectToAction("Index");
+//      LogBook newLogBook = new LogBook( "", "", "","",  new DateTime(), new DateTime(), new DateTime(),new DateTime(), 0, 0,0, 0, 0, 0,0, 0, 0);
+//      newLogBook.DeleteLunch();
+//      List<LogBook> newList = LogBook.GetAll();
+//      return RedirectToAction("Index");
 // }
 //
 // [HttpPost("/dinner/deletedinner")]
 // public ActionResult DeleteDinner()
 // {
-// 	LogBook newLogBook = new LogBook( "", "", "","",  new DateTime(), new DateTime(), new DateTime(),new DateTime(), 0, 0,0, 0, 0, 0,0, 0, 0);
-// 	newLogBook.DeleteDinner();
-// 	List<LogBook> newList = LogBook.GetAll();
-// 	return RedirectToAction("Index");
+//      LogBook newLogBook = new LogBook( "", "", "","",  new DateTime(), new DateTime(), new DateTime(),new DateTime(), 0, 0,0, 0, 0, 0,0, 0, 0);
+//      newLogBook.DeleteDinner();
+//      List<LogBook> newList = LogBook.GetAll();
+//      return RedirectToAction("Index");
 // }
 //
 // [HttpPost("/snack/deletesnack")]
 // public ActionResult DeleteSnack()
 // {
-// 	LogBook newLogBook = new LogBook( "", "", "","",  new DateTime(), new DateTime(), new DateTime(),new DateTime(), 0, 0,0, 0, 0, 0,0, 0, 0);
-// 	newLogBook.DeleteSnack();
-// 	List<LogBook> newList = LogBook.GetAll();
-// 	return RedirectToAction("Index");
+//      LogBook newLogBook = new LogBook( "", "", "","",  new DateTime(), new DateTime(), new DateTime(),new DateTime(), 0, 0,0, 0, 0, 0,0, 0, 0);
+//      newLogBook.DeleteSnack();
+//      List<LogBook> newList = LogBook.GetAll();
+//      return RedirectToAction("Index");
 // }
 }
 }
