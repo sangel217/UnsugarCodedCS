@@ -218,7 +218,7 @@ public void Delete()
 {
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
-	MySqlCommand cmd = new MySqlCommand("DELETE FROM users WHERE id = @LoginId; DELETE FROM log_book WHERE user_id = @LoginId", conn);
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM users WHERE id = @LoginId; DELETE FROM breakfast WHERE user_id = @LoginId; DELETE FROM lunch WHERE user_id = @LoginId; DELETE FROM dinner WHERE user_id = @LoginId; DELETE FROM snack WHERE user_id = @LoginId", conn);
 	MySqlParameter loginIdParameter = new MySqlParameter();
 	loginIdParameter.ParameterName = "@LoginId";
 	loginIdParameter.Value = this.GetId();
