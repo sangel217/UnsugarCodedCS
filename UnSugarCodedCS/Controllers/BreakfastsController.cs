@@ -28,12 +28,8 @@ public ActionResult Create(string food, string sugarLevel, DateTime stampTime, s
 	Login foundLogin = Login.Find(loginId);
 	Breakfast newBreakfast = new Breakfast(food, stampTime, float.Parse(sugarLevel), float.Parse(carb), loginId);
 	newBreakfast.Save();
-  //int breakfastId = newBreakfast.GetId();
 	List<Breakfast> newList = Breakfast.GetAllBreakfast();
-  //newList.ForEach( i => Console.Write("{0}\t", i));
-  //Console.WriteLine(foreach (var view in newlist){return view});
 	ViewBag.Breakfast = newList;
-  //ViewBag.BreakfastId = breakfastId;
 	return View("Index", foundLogin);
 }
 
@@ -46,7 +42,8 @@ public ActionResult DeleteBreakfast(int id, int breakfastId)
   List<Breakfast> allBreakfasts = Breakfast.GetAllBreakfast();
   ViewBag.Breakfast = allBreakfasts;
   return View("Index", login);
-  
+}
+
 [HttpGet("/logins/{loginId}/breakfastChart")]
 public ActionResult AllLogBooksForUser(int loginId)
 {

@@ -43,6 +43,7 @@ public ActionResult DeleteDinner(int id, int dinnerId)
   List<Dinner> allDinners = Dinner.GetAllDinner();
   ViewBag.Dinner = allDinners;
   return View("Index", login);
+}
 
 [HttpGet("/logins/{loginId}/dinnerChart")]
 public ActionResult AllLogBooksForUser(int loginId)

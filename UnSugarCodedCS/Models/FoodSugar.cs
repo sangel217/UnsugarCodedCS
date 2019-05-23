@@ -63,7 +63,7 @@ public static List<string> GetAllFoodNames(string userInput)
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
 	MySqlCommand cmd = conn.CreateCommand();
-	cmd.CommandText = @"SELECT name FROM food_sugar WHERE name LIKE '"+userInput+"%';";
+	cmd.CommandText = @"SELECT DECIMAL(0) name FROM food_sugar WHERE name LIKE '"+userInput+"%';";
 	MySqlDataReader rdr = cmd.ExecuteReader();
 	while(rdr.Read())
 	{
