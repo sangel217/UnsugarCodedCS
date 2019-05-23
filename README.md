@@ -2,7 +2,7 @@
 
 #### A program that allows a user to track their meals, carbohydrates, and blood sugars. 05/23/2019
 
-#### By **Sarah Angel, Maryanna Antonyuk, Mariia Stashuk, Nadia Liscano**
+#### By **Sarah Angel, Maryanna Antonyuk, Mariia Stashuk, Nadia Lizcano**
 
 ## Description
 
@@ -11,26 +11,15 @@ A journal where a user can track their food, carbohydrates, and blood sugar leve
 
 
 ### Specs
-| Spec |
-| :-------------     |
-| User can fill out a form with general information: user name, email, height, and weight |
-|User enters information |
-|Journal entry created with that information|
-| User can fill out a form with food for each meal(breakfast, lunch, dinner, snack) they have eaten |
-|User enters information |
-|Journal entry created with that information|
-| User can fill out a form with carbohydrates for each meal(breakfast, lunch, dinner, snack) they have eaten | |User enters information |
-|Journal entry created with that information|
-| User can fill out a form with the blood sugar levels for each meal(breakfast, lunch, dinner, snack) they have tested on their glucose meter |
-|User enters information |
-|Journal entry created with that information|
-| User must fill out at all fields before saving the journal entry |
-|User clicks submit on empty page|
-|Pop-up asking them to enter data|
-| User can view previous entries|
-|Journal entry created|A link is created with meal type and made available to user|
-| User can track their blood sugar level entries |
-|User clicks 'Chart' button|A chart with blood sugar levels charted over date/times is generated of all journal entries which have contents for that field with the contents of that field displayed|
+| Behavior       | Input          | Output  |
+| ------------- |:-------------:| -----:|
+| User can fill out a form with general information: user name, email, height, and weight | User enters information | Journal entry created with that information|
+| User can fill out a form with food for each meal(breakfast, lunch, dinner, snack) they have eaten | User enters information | Journal entry created with that information|
+| User can fill out a form with carbohydrates for each meal(breakfast, lunch, dinner, snack) they have eaten | |User enters information | Journal entry created with that information|
+| User can fill out a form with the blood sugar levels for each meal(breakfast, lunch, dinner, snack) they have tested on their glucose meter | User enters information | Journal entry created with that information|
+| User must fill out at all fields before saving the journal entry | User clicks submit on empty page| Pop-up asking them to enter data|
+| User can view previous entries| Journal entry created| A link is created with meal type and made available to user|
+| User can track their blood sugar level entries | User clicks 'Chart' button| A chart with blood sugar levels charted over date/times is generated of all journal entries which have contents for that field with the contents of that field displayed|
 
 ## Description
 ![Alt text](/img/1.png)
