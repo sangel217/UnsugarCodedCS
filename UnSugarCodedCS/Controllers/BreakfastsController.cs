@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Web;
+using System.Text;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
@@ -34,6 +35,19 @@ public ActionResult Create(string food, string sugarLevel, DateTime stampTime, s
 	ViewBag.Breakfast = newList;
   //ViewBag.BreakfastId = breakfastId;
 	return View("Index", foundLogin);
+}
+
+[HttpGet("/logins/{loginId}/breakfastChart")]
+public ActionResult AllLogBooksForUser(int loginId)
+{
+  Login foundLogin = Login.Find(loginId);
+	List<Breakfast> newList = foundLogin.GetBreakfasts();
+  StringBuilder sb = new StringBuilder("date,value\n");
+	foreach (Breakfast breakfast in newList)
+	{
+			sb.Append(breakfast.GetBreakfastStampTime().ToString("MM/dd/yyyy")+","+breakfast.GetBreakfastSugar()+"\n");
+	}
+	return Content(sb.ToString(),"text/csv");
 }
 
 // [HttpGet("/logins/{id}/breakfast/deleted")]
