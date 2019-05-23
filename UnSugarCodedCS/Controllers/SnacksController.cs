@@ -11,6 +11,14 @@ namespace UnSugarCodedCS.Controllers
 {
 public class SnacksController : Controller
 {
+	[HttpGet("/logins/{id}/snack")]
+	public ActionResult Index(int id)
+	{
+	  Login login = Login.Find(id);
+	  List<Snack> allSnacks = Snack.GetAllSnack();
+	  ViewBag.Snack = allSnacks;
+	  return View("Index", login);
+	}
 
 [HttpPost("/logins/{loginId}/snack")]
 public ActionResult Create(string foodSnack, string sugarLevelSnack, DateTime stampTimeSnack, string carbSnack, int loginId)
@@ -18,10 +26,22 @@ public ActionResult Create(string foodSnack, string sugarLevelSnack, DateTime st
 	Login foundLogin = Login.Find(loginId);
 	Snack newSnack = new Snack(foodSnack, stampTimeSnack, float.Parse(sugarLevelSnack), float.Parse(carbSnack), loginId);
 	newSnack.Save();
-	List<Snack> newList = foundLogin.GetSnacks();
+	List<Snack> newList = Snack.GetAllSnack();
 
 	ViewBag.Snack = newList;
 	return View("Index", foundLogin);
 }
+
+[HttpPost("/logins/{id}/snack/{snackId}/delete")]
+public ActionResult DeleteSnack(int id, int snackId)
+{
+  Snack snack = Snack.Find(snackId);
+  snack.Delete();
+  Login login = Login.Find(id);
+  List<Snack> allSnacks = Snack.GetAllSnack();
+  ViewBag.Snack = allSnacks;
+  return View("Index", login);
+}
+
 }
 }
