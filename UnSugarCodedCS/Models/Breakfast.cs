@@ -75,7 +75,7 @@ public static List<Breakfast> GetAllBreakfast()
 		float sugar = rdr.GetFloat(3);
 		float carb = rdr.GetFloat(4);
 		int user_id = rdr.GetInt32(5);
-		Breakfast newBreakfast = new Breakfast(food, stampTimeB, sugar, carb, user_id);
+		Breakfast newBreakfast = new Breakfast(food, stampTimeB, sugar, carb, user_id,breakfastId);
 		allDatas.Add(newBreakfast);
 	}
 
@@ -202,6 +202,7 @@ public static Breakfast Find(int id)
 	}
 	return newBreakfast;
 }
+
 
 }
 }

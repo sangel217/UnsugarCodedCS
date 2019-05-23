@@ -75,7 +75,7 @@ public static List<Lunch> GetAllLunch()
 		float sugar = rdr.GetFloat(3);
 		float carb = rdr.GetFloat(4);
 		int user_id = rdr.GetInt32(5);
-		Lunch newLunch = new Lunch(food, stampTimeB, sugar, carb, user_id);
+		Lunch newLunch = new Lunch(food, stampTimeB, sugar, carb, user_id, lunchId);
 		allDatas.Add(newLunch);
 	}
 
@@ -110,11 +110,15 @@ public void Delete()
 {
 	MySqlConnection conn = DB.Connection();
 	conn.Open();
-	MySqlCommand cmd = new MySqlCommand("DELETE FROM lunch WHERE user_id = @SearchId;", conn);
+	MySqlCommand cmd = new MySqlCommand("DELETE FROM lunch WHERE user_id = @SearchId; DELETE FROM lunch WHERE id = @lunchId;", conn);
 	MySqlParameter SearchIdParameter = new MySqlParameter();
 	SearchIdParameter.ParameterName = "@SearchId";
 	SearchIdParameter.Value = this.GetId();
 	cmd.Parameters.Add(SearchIdParameter);
+  MySqlParameter lunchIdParameter = new MySqlParameter();
+	lunchIdParameter.ParameterName = "@lunchId";
+	lunchIdParameter.Value = this.GetId();
+	cmd.Parameters.Add(lunchIdParameter);
 	cmd.ExecuteNonQuery();
 	if (conn != null)
 	{

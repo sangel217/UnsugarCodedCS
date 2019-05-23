@@ -17,7 +17,7 @@ public class BreakfastsController : Controller
 public ActionResult Index(int id)
 {
   Login login = Login.Find(id);
-  List<Breakfast> allBreakfasts = login.GetBreakfasts();
+  List<Breakfast> allBreakfasts = Breakfast.GetAllBreakfast();
   ViewBag.Breakfast = allBreakfasts;
   return View("Index", login);
 }
@@ -29,7 +29,7 @@ public ActionResult Create(string food, string sugarLevel, DateTime stampTime, s
 	Breakfast newBreakfast = new Breakfast(food, stampTime, float.Parse(sugarLevel), float.Parse(carb), loginId);
 	newBreakfast.Save();
   //int breakfastId = newBreakfast.GetId();
-	List<Breakfast> newList = foundLogin.GetBreakfasts();
+	List<Breakfast> newList = Breakfast.GetAllBreakfast();
   //newList.ForEach( i => Console.Write("{0}\t", i));
   //Console.WriteLine(foreach (var view in newlist){return view});
 	ViewBag.Breakfast = newList;
@@ -37,6 +37,16 @@ public ActionResult Create(string food, string sugarLevel, DateTime stampTime, s
 	return View("Index", foundLogin);
 }
 
+[HttpPost("/logins/{id}/breakfast/{breakfastId}/delete")]
+public ActionResult DeleteBreakfast(int id, int breakfastId)
+{
+  Breakfast breakfast = Breakfast.Find(breakfastId);
+  breakfast.Delete();
+  Login login = Login.Find(id);
+  List<Breakfast> allBreakfasts = Breakfast.GetAllBreakfast();
+  ViewBag.Breakfast = allBreakfasts;
+  return View("Index", login);
+  
 [HttpGet("/logins/{loginId}/breakfastChart")]
 public ActionResult AllLogBooksForUser(int loginId)
 {
@@ -49,23 +59,5 @@ public ActionResult AllLogBooksForUser(int loginId)
 	}
 	return Content(sb.ToString(),"text/csv");
 }
-
-// [HttpGet("/logins/{id}/breakfast/deleted")]
-// public ActionResult Delete(int id)
-// {
-//   return View();
-// }
-
-// [HttpPost("/logins/{loginId}/breakfast/delete")]
-// public ActionResult DeleteBreakfast(int loginId)
-// {
-//   Login login = Login.Find(loginId);
-//   List<Breakfast> loginBreakfasts = login.GetBreakfasts();
-//   foreach(Breakfast logbook in loginBreakfasts)
-//   {
-//     logbook.Delete();
-//   }
-//   return RedirectToAction("Index");
-// }
 }
 }
