@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Web;
+using System.Text;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
@@ -36,7 +37,6 @@ public ActionResult Create(string food, string sugarLevel, DateTime stampTime, s
 	return View("Index", foundLogin);
 }
 
-
 [HttpPost("/logins/{id}/breakfast/{breakfastId}/delete")]
 public ActionResult DeleteBreakfast(int id, int breakfastId)
 {
@@ -46,24 +46,18 @@ public ActionResult DeleteBreakfast(int id, int breakfastId)
   List<Breakfast> allBreakfasts = Breakfast.GetAllBreakfast();
   ViewBag.Breakfast = allBreakfasts;
   return View("Index", login);
+  
+[HttpGet("/logins/{loginId}/breakfastChart")]
+public ActionResult AllLogBooksForUser(int loginId)
+{
+  Login foundLogin = Login.Find(loginId);
+	List<Breakfast> newList = foundLogin.GetBreakfasts();
+  StringBuilder sb = new StringBuilder("date,value\n");
+	foreach (Breakfast breakfast in newList)
+	{
+			sb.Append(breakfast.GetBreakfastStampTime().ToString("MM/dd/yyyy")+","+breakfast.GetBreakfastSugar()+"\n");
+	}
+	return Content(sb.ToString(),"text/csv");
 }
-
-// [HttpGet("/logins/{id}/breakfast/deleted")]
-// public ActionResult Delete(int id)
-// {
-//   return View();
-// }
-
-// [HttpPost("/logins/{loginId}/breakfast/delete")]
-// public ActionResult DeleteBreakfast(int loginId)
-// {
-//   Login login = Login.Find(loginId);
-//   List<Breakfast> loginBreakfasts = login.GetBreakfasts();
-//   foreach(Breakfast logbook in loginBreakfasts)
-//   {
-//     logbook.Delete();
-//   }
-//   return RedirectToAction("Index");
-// }
 }
 }

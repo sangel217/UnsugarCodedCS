@@ -6,6 +6,7 @@ using System;
 using System.Web;
 using Newtonsoft.Json;
 using System.Runtime.Serialization;
+using System.Text;
 
 namespace UnSugarCodedCS.Controllers
 {
@@ -32,6 +33,7 @@ public ActionResult Create(string foodLunch, string sugarLevelLunch, DateTime st
 	ViewBag.Lunch = newList;
 	return View("Index", foundLogin);
 }
+
 [HttpPost("/logins/{id}/lunch/{lunchId}/delete")]
 public ActionResult DeleteLunch(int id, int lunchId)
 {
@@ -43,6 +45,20 @@ public ActionResult DeleteLunch(int id, int lunchId)
 	return View("Index", login);
 }
 
+
+
+[HttpGet("/logins/{loginId}/lunchChart")]
+public ActionResult AllLogBooksForUser(int loginId)
+{
+  Login foundLogin = Login.Find(loginId);
+	List<Lunch> newList = foundLogin.GetLunchs();
+  StringBuilder sb = new StringBuilder("date,value\n");
+	foreach (Lunch lunch in newList)
+	{
+			sb.Append(lunch.GetLunchStampTime().ToString("MM/dd/yyyy")+","+lunch.GetLunchSugar()+"\n");
+	}
+	return Content(sb.ToString(),"text/csv");
+}
 
 }
 }

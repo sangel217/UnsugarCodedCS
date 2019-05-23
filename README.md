@@ -1,34 +1,25 @@
 # Unsugar Coded ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
-#### A program that allows a user to track their sleep, medications, food, drink, and exercises, 05/23/2019
+#### A program that allows a user to track their meals, carbohydrates, and blood sugars. 05/23/2019
 
-#### By **Sarah Angel, Maryanna Antonyuk, Mariia Stashuk, Nadia**
+#### By **Sarah Angel, Maryanna Antonyuk, Mariia Stashuk, Nadia Lizcano**
 
 ## Description
 
-A journal where a user can track their sleep, medications, food, drink, and exercises.  They can see previous entries as well as see trends in food, sleep, etc.
+A journal where a user can track their food, carbohydrates, and blood sugar levels.  They can see previous entries as well as see trends in blood sugar levels as a chart.
 
 
 
 ### Specs
-| Spec |
-| :-------------     |
-| User must fill out at least 1 field before saving the journal entry |User clicks submit on empty page|Pop-up asking them to enter data|
-| User can fill out a form with amount of sleep | User enters number |Journal entry created with that amount of sleep|
-| User cannot put anything but a number in the field | Input: blah | Output: Ask user for valid sleep
-| User can fill out a form with list of medications | User enters information |Journal entry created with that information|
-| User can fill out a form with list of exercises | User enters information |Journal entry created with that information|
-| User can fill out a form with food they have eaten | User enters information |Journal entry created with that information|
-| User can fill out a form with the drinks they have consumed | User enters information |Journal entry created with that information|
-| User can fill out a form with the drink amount they have consumed | User enters information |Journal entry created with that information|
-| User can fill out a form with general information | User enters information |Journal entry created with that information|
-| User can view previous entries|Journal entry created|A link is created with timedate stamp and made available to user|
-| User can track the sleep they have gotten|User clicks 'Track sleep' button|A list with clickable entries is generated of all journal entries which have contents for the sleep field with the contents of the sleep field displayed|
-| User can track the medications they have taken |User clicks 'Track medications' button|A list with clickable entries is generated of all journal entries which have contents for that field with the contents of that field displayed|
-| User can track the exercises they have done|User clicks 'Track exercises' button|A list with clickable entries is generated of all journal entries which have contents for that field with the contents of that field displayed|
-| User can track the food they have eaten|User clicks 'Track diet' button|A list with clickable entries is generated of all journal entries which have contents for that field with the contents of that field displayed|
-| User can track the drinks they have consumed|User clicks 'Track drinks' button|A list with clickable entries is generated of all journal entries which have contents for that field with the contents of that field displayed|
-| User can track their general journal entries |User clicks 'Track general' button|A list with clickable entries is generated of all journal entries which have contents for that field with the contents of that field displayed|
+| Behavior       | Input          | Output  |
+| ------------- |:-------------:| -----:|
+| User can fill out a form with general information: user name, email, height, and weight | User enters information | Journal entry created with that information|
+| User can fill out a form with food for each meal(breakfast, lunch, dinner, snack) they have eaten | User enters information | Journal entry created with that information|
+| User can fill out a form with carbohydrates for each meal(breakfast, lunch, dinner, snack) they have eaten | |User enters information | Journal entry created with that information|
+| User can fill out a form with the blood sugar levels for each meal(breakfast, lunch, dinner, snack) they have tested on their glucose meter | User enters information | Journal entry created with that information|
+| User must fill out at all fields before saving the journal entry | User clicks submit on empty page| Pop-up asking them to enter data|
+| User can view previous entries| Journal entry created| A link is created with meal type and made available to user|
+| User can track their blood sugar level entries | User clicks 'Chart' button| A chart with blood sugar levels charted over date/times is generated of all journal entries which have contents for that field with the contents of that field displayed|
 
 ## Description
 ![Alt text](/img/1.png)
@@ -47,10 +38,12 @@ A journal where a user can track their sleep, medications, food, drink, and exer
 
 
 ## Known Issues
-* No known issues at this time
+* No known issues
 
 ## Technologies Used
 
+* D3 JS Libraries
+* JavaScript
 * C#
 * MySql
   * jQuery
@@ -59,7 +52,7 @@ A journal where a user can track their sleep, medications, food, drink, and exer
 
 ## Support and contact details
 
-If you have any questions or problems, please contact  Sarah (), Mariia Stashuk (mariiapopovych@gmail.com), Nadia (), Maryanna()
+If you have any questions or problems, please contact  Sarah (sangel217@hotmail.com), Mariia Stashuk (mariiapopovych@gmail.com), Nadia (priscila.lizacano@gmail.com), Maryana(amaryana@gmail.com)
 
 ### License
 

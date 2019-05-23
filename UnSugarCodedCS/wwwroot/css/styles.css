@@ -1,5 +1,6 @@
 body{
 		background-color: #8baee5;
+			margin-top:8%;
 	}
 	.contact{
 		padding: 4%;
@@ -43,16 +44,17 @@ body{
   .material_list_group .material_list_group_item {
     color: red;
     font-weight: 400;
-    border-radius: 0;
-    background-color: #cbd9ef;
+    border-radius: 10;
+		border-color:#777;
+    background-color: #eee;
     -webkit-transition: background-color 0.2s ease-out 0s;
     transition: background-color 0.2s ease-out 0s;
   }
   .material_list_group .material_list_group_item:hover {
-    background-color: #336ea1;
+    background-color: #ccc;
   }
   .material_list_group .disabled:hover {
-    background-color: #4092d9;
+    background-color: #ccc;
     color: #ffffff;
   }
   .material_list_group .material_badge {
@@ -417,4 +419,10 @@ Ani
  width: 48px;
  height: 48px;
  margin: -24px 0 0 -24px;
+}
+
+.centered {
+  position: fixed; /* or absolute */
+  top: 50%;
+  left: 50%;
 }
